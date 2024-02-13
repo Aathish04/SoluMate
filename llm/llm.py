@@ -29,14 +29,16 @@ or, if all dependencies are managed manually rather than using poetry
 You can also run this example directly in the environment with llm_app instaslled.
 
 To call the REST API:
-curl --data '{"user": "user", "query": "How to connect to Kafka in Pathway?"}' http://localhost:8080/ | jq
+curl --data '{"user": "user", "query": "Where do I live?"}' http://localhost:8080/ | jq
+
+Please run `python3 -m llama_cpp.server --model 'model.gguf' --n_gpu_layers 1  --chat_format chatml` before running this script to ensure the inference server is running.
 """
 import os
 
 import pathway as pw
 from pathway.stdlib.ml.index import KNNIndex
 from pathway.xpacks.llm.embedders import SentenceTransformerEmbedder
-from pathway.xpacks.llm.llms import HFPipelineChat, prompt_chat_single_qa
+from pathway.xpacks.llm.llms import LiteLLMChat, prompt_chat_single_qa
 
 
 class DocumentInputSchema(pw.Schema):
@@ -51,13 +53,13 @@ class QueryInputSchema(pw.Schema):
 def run(
     *,
     data_dir: str = os.environ.get(
-        "PATHWAY_DATA_DIR", "./examples/data/pathway-docs-small/"
+        "PATHWAY_DATA_DIR", "data"
     ),
-    host: str = "0.0.0.0",
-    port: int = 8080,
-    model_locator: str = os.environ.get("MODEL", "gpt2"),
+    host: str = os.getenv("PATHWAY_BASEURL"),
+    port: int = int(os.getenv("PATHWAY_PORT")),
     embedder_locator: str = os.environ.get("EMBEDDER", "intfloat/e5-large-v2"),
-    max_tokens: int = 60,
+    embedding_dimension: int = 1024,
+    max_tokens: int = 0,
     device: str = "cpu",
     **kwargs,
 ):
@@ -96,27 +98,16 @@ def run(
     @pw.udf
     def build_prompt(documents, query):
         docs_str = "\n".join(documents)
-        prompt = f"You are given a query: {query}\n Answer this query based on the following documents: \n {docs_str}"
+        prompt = f"Given the following documents : \n {docs_str} \nAnswer the following query: {query} "
         return prompt
 
     prompt = query_context.select(
         prompt=build_prompt(pw.this.documents_list, pw.this.query)
     )
-
-    model = HFPipelineChat(
-        model=model_locator,
-        device=device,
-        return_full_text=False,
-        max_new_tokens=max_tokens,
-    )
-
-    # Cropping the prompt so that it is short enough for the model. Depending on input documents
-    # and chosen model this may not be necessary.
-    prompt = prompt.select(
-        prompt=model.crop_to_max_length(
-            input_string=pw.this.prompt, max_prompt_length=500
-        )
-    )
+    os.environ["OPENAI_API_KEY"] = "RandomText"
+    model = LiteLLMChat(
+        model="custom_openai/mistral",
+        api_base="http://localhost:8000/v1")
 
     responses = prompt.select(
         query_id=pw.this.id,
