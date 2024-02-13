@@ -1,0 +1,5 @@
+llama-cpp-python[server]
+pathway
+litellm
+sentence_transformers
+fastapi
