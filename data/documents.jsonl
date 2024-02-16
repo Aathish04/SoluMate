@@ -1,1 +1,1 @@
-{"doc": "I live in Chennai!"}
+{"doc":"Tamil Nadu Water Board Grievance Redressal System Schema is as follows: {'agentid': 'hidden', 'modecode': 'hidden', 'complaintno': 'hidden', 'complaintdate': 'hidden', 'complainttime': 'hidden', 'typecode': '', 'name': 'text', 'mobile': 'text', 'email': 'text', 'divisioncode': '', 'locationcode': '', 'streetcode': '', 'doorno': 'text', 'noofdays': 'text', 'complaintdetails': 'text', 'Save': 'submit', 'Reset': 'button'}"}
