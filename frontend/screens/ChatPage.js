@@ -13,17 +13,19 @@ const ChatPage = () => {
 
   const handleSend = () => {
     if (inputText.trim()) {
-      // Here you would call your AI API to get the response
       const newMessage = {id: Date.now(), text: inputText, sender: 'user'};
       setMessages([...messages, newMessage]);
-
-      // Placeholder for AI response
-      const aiResponse = {id: Date.now() + 1, text: "This is a placeholder response.", sender: 'ai'};
-      setMessages(currentMessages => [...currentMessages, aiResponse]);
-
+  
       setInputText('');
+  
+      // Adding a 2-second delay before setting the AI response
+      setTimeout(() => {
+        const aiResponse = {id: Date.now() + 1, text: "This is a placeholder response.", sender: 'ai'};
+        setMessages(currentMessages => [...currentMessages, aiResponse]);
+      }, 2000); // 2000 milliseconds = 2 seconds
     }
   };
+  
 
   return (
     <SafeAreaView style={{flex: 1, backgroundColor:"#222222"}}>
