@@ -1,15 +1,18 @@
 import React from "react";
+import { useState } from "react";
 import { View, Image, StyleSheet,Pressable,Text,TouchableOpacity} from "react-native";
 import MyTextInput from "../components/Textbox";
 import SignUpScreen from "./Signup";
 import { useNavigation } from "@react-navigation/native";
-
 
 export default function LoginScreen() {
     const doNothing = () => {
         console.log("Hi");
     }
     const navigation = useNavigation();
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
 
     let name = '';
     return(
@@ -18,14 +21,14 @@ export default function LoginScreen() {
              <Image source = {require('../assets/logo.png')} style = {styles.image}/>
             <View style={styles.inputContainer}>
             <MyTextInput
-                value = {name}
+                value = {email}
                 placeholder = {"Email"}
-                onChange = {doNothing}
+                onChange = {setEmail}
              />
              <MyTextInput
-                value = {name}
+                value = {password}
                 placeholder={"Password"}
-                onChange = {doNothing}
+                onChange = {setPassword}
                 
              />
             </View>

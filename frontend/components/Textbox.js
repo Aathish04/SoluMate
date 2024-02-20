@@ -10,7 +10,7 @@ function MyTextInput({ value, onChange, placeholder }) {
         borderRadius: 10,
         padding: 10,
         margin: 15,
-        color: "white",
+        color: "black",
         backgroundColor: 'white' // Set text color to white
  
       }}
