@@ -5,15 +5,14 @@ import { initializeAuth, getAuth, getReactNativePersistence } from 'firebase/aut
 import ReactNativeAsyncStorage from '@react-native-async-storage/async-storage';
 
 const firebaseConfig = {
-    apiKey: "AIzaSyAU9pZG46Uz4O-kJsl8g4XnNcxzO0ImzIM",
-    authDomain: "customerservice-c5e4d.firebaseapp.com",
-    projectId: "customerservice-c5e4d",
-    storageBucket: "customerservice-c5e4d.appspot.com",
-    messagingSenderId: "896692861596",
-    appId: "1:896692861596:web:650172a143e4121f8a4b59",
-    measurementId: "G-YJMBR83YWM"
- };
-  
+  apiKey: "AIzaSyDeAEW30lxc3BnayP3BB7hn1kHUWmZWuL8",
+  authDomain: "solumate-8a51a.firebaseapp.com",
+  projectId: "solumate-8a51a",
+  storageBucket: "solumate-8a51a.appspot.com",
+  messagingSenderId: "572276897281",
+  appId: "1:572276897281:web:208357c5090e8beeba7200",
+  measurementId: "G-XP1TPBXH7H"
+};
 
 // initialize Firebase App
 const app = initializeApp(firebaseConfig);

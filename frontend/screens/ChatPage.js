@@ -87,11 +87,13 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 10,
     backgroundColor: '#F1EBE5',
+
   },
   message: {
     padding: 10,
     borderRadius: 10,
     marginVertical: 5,
+    marginBottom:20,
   },
   userMessage: {
     alignSelf: 'flex-end',
