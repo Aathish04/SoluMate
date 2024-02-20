@@ -29,7 +29,7 @@ export default function SignUpScreen() {
             
           const userCredential = await signInWithEmailAndPassword(auth,email,password);
           const user = userCredential.user;
-          //console.log('User signed in after signup: ',user);
+          console.log('User signed in after signup: ',user);
            navigation.reset({
             index: 0,
             routes: [{ name: 'Home' }], // Name of the screen to navigate after login
@@ -43,10 +43,6 @@ export default function SignUpScreen() {
       }
 
       const signup = async ()=>{
-        if (password !== confirmPassword) {
-            Alert.alert('Error', 'Passwords do not match. Please try again.');
-            return; // Stop the function if the passwords don't match
-        }
         try{
           const cleanedEmail = cleanEmail(email);
           const userCredential = await createUserWithEmailAndPassword(auth,cleanedEmail,password);
@@ -126,7 +122,7 @@ export default function SignUpScreen() {
             </View>
             <Pressable
                 style={styles.button}
-                onPress={()=>{navigation.navigate('Home')}}
+                onPress={signup}
             >
                 <Text style={styles.buttonText}>SignUp</Text>
             </Pressable>

@@ -1,13 +1,39 @@
 import React from "react";
 import { useState } from "react";
-import { View, Image, StyleSheet, Pressable, Text, TouchableOpacity, ScrollView, SafeAreaView } from "react-native";
+import { View, Image, StyleSheet, Pressable, Text, TouchableOpacity, ScrollView, SafeAreaView,Alert } from "react-native";
 import MyTextInput from "../components/Textbox";
 import { useNavigation } from "@react-navigation/native";
+import {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword} from 'firebase/auth';
+import {app} from '../firebaseConfig'
 
 export default function LoginScreen() {
+    const auth = getAuth(app)
     const navigation = useNavigation();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+
+    const gohome = async ()=>{
+        console.log("hello")
+        try{
+          const userCredential = await signInWithEmailAndPassword(auth,email,password);
+          const user = userCredential.user;
+          console.log(user.email)
+          navigation.reset({
+            index: 0,
+            routes: [{ name: 'Home' }], // Name of the screen to navigate after login
+          });
+    
+        }catch(error){
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          if(errorCode==='auth/invalid-credential'){
+            Alert.alert("Invalid credentials!");
+            console.log(errorCode)
+          }else{
+          console.log(Alert.alert(errorMessage));
+          }
+        }
+      }
 
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: "#F1EBE5" }}>
@@ -28,9 +54,7 @@ export default function LoginScreen() {
                     </View>
                     <Pressable
                         style={styles.button}
-                        onPress={() => {
-                            navigation.navigate('Home')
-                        }}>
+                        onPress={gohome}>
                         <Text style={styles.buttonText}>Login</Text>
                     </Pressable>
                     <Text style={{ color: '#112A46' }}> Don't have an account? </Text>
