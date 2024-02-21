@@ -8,8 +8,22 @@ import MyTextInput from "../components/Textbox.js";
 const ChatPage = () => {
   const [messages, setMessages] = useState([]);
   const [inputText, setInputText] = useState('');
+  const [response_, setResponse_] = useState('');
 
   const navigation = useNavigation();
+
+  const fetchData = async () => {
+    try {
+      const response = await fetch('https://abad-2401-4900-2350-dd8c-60b6-c60e-acd1-9baf.ngrok-free.app');
+      const data = await response.json();
+      console.log(data.message);
+      setResponse_(data.message);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  };
+  
+
 
   const handleSend = () => {
     if (inputText.trim()) {
@@ -20,10 +34,12 @@ const ChatPage = () => {
   
       // Adding a 2-second delay before setting the AI response
       setTimeout(() => {
-        const aiResponse = {id: Date.now() + 1, text:"To file a complaint regarding potholes in Chennai, follow these steps using the Tamil Nadu Pothole Complaint Grievance Redressal System:\n\n1. Visit the website: https://erp.chennaicorporation.gov.in/pgr/citizen/BeforeReg.do\n2. Fill in the required fields with your personal information such as name, mobile number, and email address.\n3. Provide your address, including the street name, and the pin code for your location in Chennai.\n4. Choose the 'Pothole' issue from the given complaint types or input it manually under 'complaintype0'.\n5. Describe the issue related to the pothole in 'complaintDetails'.\n6. If you wish to remain anonymous, select the 'anonReg' checkbox.\n7. Click on the 'generateOtp' button to generate an OTP (One Time Password), which will be sent to your registered mobile number.\n8. Enter the received OTP in the 'txtSMSOtp' field and click on the 'validateOtp' button to verify it.\n9. Finally, fill in any other necessary details and submit your complaint by clicking on the 'button3' (submit) button.", sender: 'ai'};
+        const aiResponse = {id: Date.now() + 1, text:response_, sender: 'ai'};
         setMessages(currentMessages => [...currentMessages, aiResponse]);
       }, 2000); // 2000 milliseconds = 2 seconds
     }
+
+    fetchData()
   };
   
 
