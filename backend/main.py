@@ -15,7 +15,7 @@ app.add_middleware(
 # Define a route using a decorator
 @app.get("/")
 def read_root():
-    return {"message": "Hello, FastAPI!"}
+    return {"message": "Hello, AAAALUUUU"}
 
 # Define another route with a path parameter
 @app.get("/items/{item_id}")

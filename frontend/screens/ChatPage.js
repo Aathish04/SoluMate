@@ -14,7 +14,7 @@ const ChatPage = () => {
 
   const fetchData = async () => {
     try {
-      const response = await fetch('https://abad-2401-4900-2350-dd8c-60b6-c60e-acd1-9baf.ngrok-free.app');
+      const response = await fetch('https://a430-115-244-221-146.ngrok-free.app/');
       const data = await response.json();
       console.log(data.message);
       setResponse_(data.message);

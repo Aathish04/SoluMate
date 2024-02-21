@@ -3,6 +3,7 @@ import { SafeAreaView, View, Text, TextInput, TouchableOpacity, ScrollView, Styl
 import { Ionicons } from '@expo/vector-icons';
 import { Audio } from 'expo-av';
 import { LogBox } from 'react-native';
+import { useNavigation } from "@react-navigation/native";
 
 LogBox.ignoreLogs([
   'new NativeEventEmitter()',
@@ -13,6 +14,22 @@ const ChatPage = () => {
   const [inputText, setInputText] = useState('');
   const [recording, setRecording] = useState(null);
   const [sound, setSound] = useState(null);
+  const [isRecording, setIsRecording] = useState(false)
+  const [timeElapsed, setTimeElapsed] = useState(0);
+  const navigation = useNavigation()
+
+
+  useEffect(() => {
+    let interval;
+  
+    if (isRecording) {
+      interval = setInterval(() => {
+        setTimeElapsed((prevTime) => prevTime + 1);
+      }, 1000);
+    }
+  
+    return () => clearInterval(interval);
+  }, [isRecording]);
 
   useEffect(() => {
     (async () => {
@@ -20,13 +37,6 @@ const ChatPage = () => {
     })();
   }, []);
 
-  const handleSend = async () => {
-    if (inputText.trim()) {
-      const newMessage = { id: Date.now(), text: inputText, sender: 'user' };
-      setMessages([...messages, newMessage]);
-      setInputText('');
-    }
-  };
 
   const startRecording = async () => {
     try {
@@ -34,9 +44,13 @@ const ChatPage = () => {
         allowsRecordingIOS: true,
         playsInSilentModeIOS: true,
       });
+      setIsRecording(true);
+      console.log(timeElapsed);
+
       const { recording } = await Audio.Recording.createAsync(
         Audio.RECORDING_OPTIONS_PRESET_HIGH_QUALITY
       );
+      
       setRecording(recording);
     } catch (err) {
       console.error('Failed to start recording', err);
@@ -45,13 +59,14 @@ const ChatPage = () => {
 
   const stopRecording = async () => {
     setRecording(null);
+    setIsRecording(false);
     await recording.stopAndUnloadAsync();
     const uri = recording.getURI(); 
-
     // Save the recording uri to state or send it to the server
     const newMessage = { id: Date.now(), text: 'New audio message', sender: 'user', uri };
     setMessages([...messages, newMessage]);
-  };
+    setTimeElapsed(0);
+    };
 
   const playSound = async (uri) => {
     const { sound } = await Audio.Sound.createAsync({ uri });
@@ -69,25 +84,25 @@ const ChatPage = () => {
   }, [sound]);
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: "#222222" }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: "#F1EBE5" }}>
       <View style={styles.backbutton}>
-        <Pressable onPress={() => { /* navigation logic here */ }}>
+        <Pressable onPress={() => {  navigation.navigate('Home') }}>
           <Ionicons name="arrow-back-outline" size={32} color="white" />
         </Pressable>
       </View>
       <Text style={styles.header}>AI Chat</Text>
-
       <ScrollView style={styles.messagesContainer}>
         {messages.map((message, index) => (
           <TouchableOpacity key={index} onPress={() => message.uri && playSound(message.uri)}>
             <View style={[styles.message, message.sender === 'user' ? styles.userMessage : styles.aiMessage]}>
-              <Text style={styles.messageText}>{message.text}</Text>
+            <Ionicons name="play-outline" size={25} color="white"/>
+              <Text style={styles.messageText}> Click here to replay </Text>
             </View>
           </TouchableOpacity>
         ))}
       </ScrollView>
 
-      <View style={styles.inputContainer}>
+      {/* <View style={styles.inputContainer}>
         <TextInput
           value={inputText}
           onChangeText={setInputText}
@@ -97,13 +112,15 @@ const ChatPage = () => {
         <TouchableOpacity onPress={handleSend} style={styles.sendButton}>
           <Ionicons name="send" size={24} color="white" />
         </TouchableOpacity>
-      </View>
-      <View style={{ flexDirection: 'row', justifyContent: 'space-around', padding: 10 }}>
-        <TouchableOpacity onPress={startRecording} style={styles.actionButton}>
-          <Text style={styles.buttonText}>Start Recording</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={stopRecording} style={styles.actionButton}>
-          <Text style={styles.buttonText}>Stop Recording</Text>
+      </View> */}
+
+    {isRecording && (
+                        <Text style={styles.count}>{timeElapsed}</Text>
+                    )
+    }
+      <View style={{ flexDirection: 'row', justifyContent: 'space-around', padding: 10, backgroundColor: '#F1EBE5' }}>
+        <TouchableOpacity onPressIn={startRecording} onPressOut={stopRecording} style={styles.actionButton}>
+        <Ionicons name="mic-outline" size={32} color="white" />
         </TouchableOpacity>
       </View>
     </SafeAreaView>
@@ -139,6 +156,7 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 10,
     marginVertical: 5,
+    flexDirection: 'row'
   },
   userMessage: {
     alignSelf: 'flex-end',
@@ -175,10 +193,9 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   actionButton: {
-    backgroundColor: '#007AFF', // A blue color for the action buttons
-    borderRadius: 20,
-    paddingVertical: 10,
-    paddingHorizontal: 20,
+    backgroundColor: '#112A46', // A blue color for the action buttons
+    borderRadius: 40,
+    padding:20,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -186,6 +203,14 @@ const styles = StyleSheet.create({
     color: '#FFFFFF', // White color for the button text
     fontSize: 16,
   },
+
+  count:
+  {
+    fontSize: 50,
+    justifyContent: 'center',
+    alignSelf: 'center',
+    
+  }
 });
 
 export default ChatPage;
