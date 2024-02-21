@@ -4,6 +4,8 @@ import { Ionicons } from '@expo/vector-icons';
 import { Audio } from 'expo-av';
 import { LogBox } from 'react-native';
 import { useNavigation } from "@react-navigation/native";
+import * as FileSystem from 'expo-file-system';
+
 
 LogBox.ignoreLogs([
   'new NativeEventEmitter()',
@@ -17,6 +19,8 @@ const ChatPage = () => {
   const [isRecording, setIsRecording] = useState(false)
   const [timeElapsed, setTimeElapsed] = useState(0);
   const navigation = useNavigation()
+  const [response_, setResponse_] = useState('');
+
 
 
   useEffect(() => {
@@ -27,6 +31,8 @@ const ChatPage = () => {
         setTimeElapsed((prevTime) => prevTime + 1);
       }, 1000);
     }
+
+    setResponse_("Nice voice");
   
     return () => clearInterval(interval);
   }, [isRecording]);
@@ -63,15 +69,27 @@ const ChatPage = () => {
     await recording.stopAndUnloadAsync();
     const uri = recording.getURI(); 
     // Save the recording uri to state or send it to the server
-    const newMessage = { id: Date.now(), text: 'New audio message', sender: 'user', uri };
+
+    const newMessage = { id: Date.now(), text: 'Click here to play', sender: 'user', uri };
     setMessages([...messages, newMessage]);
     setTimeElapsed(0);
+
+    const base64Data = await FileSystem.readAsStringAsync(uri, { encoding: FileSystem.EncodingType.Base64 });
+    //console.log(base64Data);
+
+    
+
+    setTimeout(() => {
+      const aiResponse = {id: Date.now() + 1, text:response_, sender: 'ai'};
+      setMessages(currentMessages => [...currentMessages, aiResponse]);
+    }, 2000); 
     };
+
+
 
   const playSound = async (uri) => {
     const { sound } = await Audio.Sound.createAsync({ uri });
     setSound(sound);
-
     await sound.playAsync();
   };
 
@@ -90,13 +108,16 @@ const ChatPage = () => {
           <Ionicons name="arrow-back-outline" size={32} color="white" />
         </Pressable>
       </View>
-      <Text style={styles.header}>AI Chat</Text>
+      <Text style={styles.header}>AI Voice Chat</Text>
       <ScrollView style={styles.messagesContainer}>
         {messages.map((message, index) => (
           <TouchableOpacity key={index} onPress={() => message.uri && playSound(message.uri)}>
             <View style={[styles.message, message.sender === 'user' ? styles.userMessage : styles.aiMessage]}>
-            <Ionicons name="play-outline" size={25} color="white"/>
-              <Text style={styles.messageText}> Click here to replay </Text>
+              { message.sender === 'user' &&  ( <Ionicons name="play-outline" size={25} color="white"/>)
+
+              }
+           
+              <Text style={styles.messageText}>{message.text} </Text>
             </View>
           </TouchableOpacity>
         ))}
@@ -120,7 +141,15 @@ const ChatPage = () => {
     }
       <View style={{ flexDirection: 'row', justifyContent: 'space-around', padding: 10, backgroundColor: '#F1EBE5' }}>
         <TouchableOpacity onPressIn={startRecording} onPressOut={stopRecording} style={styles.actionButton}>
-        <Ionicons name="mic-outline" size={32} color="white" />
+        
+      {isRecording  && 
+        (<Ionicons name="mic-outline" size={32} color="red" />)
+      }
+
+      {!isRecording  && 
+        (<Ionicons name="mic-outline" size={32} color="white" />)
+      }   
+        
         </TouchableOpacity>
       </View>
     </SafeAreaView>
