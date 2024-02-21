@@ -5,6 +5,7 @@ import MyTextInput from "../components/Textbox";
 import { useNavigation } from "@react-navigation/native";
 import {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword} from 'firebase/auth';
 import {app} from '../firebaseConfig'
+import MyPassword from "../components/Password";
 
 export default function LoginScreen() {
     const auth = getAuth(app)
@@ -46,15 +47,17 @@ export default function LoginScreen() {
                             placeholder={"Email"}
                             onChange={setEmail}
                         />
-                        <MyTextInput
+                        <MyPassword
+                            
                             value={password}
                             placeholder={"Password"}
                             onChange={setPassword}
+                            
                         />
                     </View>
                     <Pressable
                         style={styles.button}
-                        onPress={gohome}>
+                        onPress={()=>{navigation.navigate('Home')}}>
                         <Text style={styles.buttonText}>Login</Text>
                     </Pressable>
                     <Text style={{ color: '#112A46' }}> Don't have an account? </Text>
@@ -86,7 +89,8 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
         backgroundColor: "#F1EBE5",
-        width:'100%'
+        width:'100%',
+        marginTop:50,
     },
     button: {
         backgroundColor: '#112A46',
@@ -102,7 +106,8 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
     inputContainer: {
-        width: 300,
+        marginTop:20,
+        width: 360,
         marginBottom: 50, // Removed duplicated marginBottom property
 
     },
