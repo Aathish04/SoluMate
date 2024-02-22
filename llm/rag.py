@@ -98,13 +98,13 @@ def run(
     @pw.udf
     def build_prompt(documents, query):
         docs_str = "\n".join(documents)
-        prompt = f"Given the following documents : \n {docs_str} \nAnswer the following query: {query} "
+        prompt = f"Given the following data : \n {docs_str} \nAnswer the following query in detail, do not mention that the data was given to you. Do not use the short URL. Include alternatives if relevant and in the data: {query} "
         return prompt
 
     prompt = query_context.select(
         prompt=build_prompt(pw.this.documents_list, pw.this.query)
     )
-    os.environ["OPENAI_API_KEY"] = "RandomText"
+    os.environ["OPENAI_API_KEY"] = "AIzaSyDbKTxaPQBj2dvVevPSCujqF9zPcIynBhA"
     model = LiteLLMChat(
         model="custom_openai/mistral",
         api_base="http://localhost:8000/v1")

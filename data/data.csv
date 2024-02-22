@@ -1,2 +1,0 @@
-name,formschema,url,formurl,about,contact
-Tamil Nadu Water Board,{'agentid': 'hidden', 'modecode': 'hidden', 'complaintno': 'hidden', 'complaintdate': 'hidden', 'complainttime': 'hidden', 'typecode': '', 'name': 'text', 'mobile': 'text', 'email': 'text', 'divisioncode': '', 'locationcode': '', 'streetcode': '', 'doorno': 'text', 'noofdays': 'text', 'complaintdetails': 'text', 'Save': 'submit', 'Reset': 'button'},https://www.twadboard.tn.gov.in/,
