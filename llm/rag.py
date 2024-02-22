@@ -39,7 +39,9 @@ import pathway as pw
 from pathway.stdlib.ml.index import KNNIndex
 from pathway.xpacks.llm.embedders import SentenceTransformerEmbedder
 from pathway.xpacks.llm.llms import LiteLLMChat, prompt_chat_single_qa
+from dotenv import load_dotenv
 
+load_dotenv()
 
 class DocumentInputSchema(pw.Schema):
     doc: str
@@ -104,7 +106,7 @@ def run(
     prompt = query_context.select(
         prompt=build_prompt(pw.this.documents_list, pw.this.query)
     )
-    os.environ["OPENAI_API_KEY"] = "AIzaSyDbKTxaPQBj2dvVevPSCujqF9zPcIynBhA"
+    os.environ["OPENAI_API_KEY"] = os.environ["LLM_API_KEY"]
     model = LiteLLMChat(
         model="custom_openai/mistral",
         api_base="http://localhost:8000/v1")
