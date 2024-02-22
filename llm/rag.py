@@ -51,6 +51,7 @@ class QueryInputSchema(pw.Schema):
     query: str
     user: str
 
+os.environ["OPENAI_API_KEY"] = os.environ["LLM_API_KEY"]
 
 def run(
     *,
@@ -61,7 +62,6 @@ def run(
     port: int = int(os.getenv("PATHWAY_PORT")),
     embedder_locator: str = os.environ.get("EMBEDDER", "intfloat/e5-large-v2"),
     embedding_dimension: int = 1024,
-    max_tokens: int = 0,
     device: str = "cpu",
     **kwargs,
 ):
@@ -94,26 +94,33 @@ def run(
     )
 
     query_context = query + index.get_nearest_items(
-        query.vector, k=3, collapse_rows=True
+        query.vector, k=10, collapse_rows=True
     ).select(documents_list=pw.this.doc)
 
     @pw.udf
     def build_prompt(documents, query):
         docs_str = "\n".join(documents)
-        prompt = f"Given the following data : \n {docs_str} \nAnswer the following query in detail, do not mention that the data was given to you. Do not use the short URL. Include alternatives if relevant and in the data: {query} "
+        prompt = f"Given the following data and all previous information:\n {docs_str} \nAnswer the following query in detail: {query} "
         return prompt
+    
+    @pw.udf
+    def prompt_chat_multi_qa(question: str,pasthistory:list =[]) -> pw.Json:
+        """Create chat prompt messages for multiple question answering."""
+        
+        sysprompt = "You are Solumate, a grievance helpline chatbot. You answer queries with only the data that is given to you. You include alternatives if relevant. If the form Schema is provided, you give step by step instructions on filling out the form.\n"
+        return pw.Json(pasthistory+[dict(role="system", content=sysprompt),dict(role="user", content=question)])
 
     prompt = query_context.select(
         prompt=build_prompt(pw.this.documents_list, pw.this.query)
     )
-    os.environ["OPENAI_API_KEY"] = os.environ["LLM_API_KEY"]
+
     model = LiteLLMChat(
         model="custom_openai/mistral",
-        api_base="http://localhost:8000/v1")
+        api_base=os.environ["LLM_API_BASE"])
 
     responses = prompt.select(
         query_id=pw.this.id,
-        result=model(prompt_chat_single_qa(pw.this.prompt)),
+        result=model(prompt_chat_multi_qa(pw.this.prompt),max_tokens=0),
     )
 
     response_writer(responses)

@@ -1,0 +1,5 @@
+services:
+  gemini-openai-proxy:
+      image: ghcr.io/zuisong/gemini-openai-proxy:node
+      ports:
+          - 8000:8000
