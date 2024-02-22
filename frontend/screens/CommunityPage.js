@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import { SafeAreaView, View, Text, TextInput, TouchableOpacity, ScrollView, StyleSheet } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
 
 const Community = () => {
+  const navigation = useNavigation();
   const [formData, setFormData] = useState({
     complaintName: '',
     complaintNature: '',
@@ -36,6 +39,13 @@ const Community = () => {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#222222" }}>
       <ScrollView style={styles.container}>
+      <TouchableOpacity
+          style={styles.backButton}
+          onPress={() => {
+            navigation.goBack();
+          }}>
+          <Ionicons name="arrow-back-outline" size={32} color="white" />
+        </TouchableOpacity>
         <Text style={styles.header}>Community Page</Text>
         <View style={styles.block}>
         <TextInput
@@ -92,8 +102,16 @@ const styles = StyleSheet.create({
     marginBottom: 30,
     color: 'white',
     textAlign: 'center',
-    marginTop:150,
+    marginTop:180,
     color:'black',
+  },
+  backButton: {
+    position: 'absolute',
+    top: 60,
+    left: 10,
+    backgroundColor: '#112A46',
+    borderRadius: 20,
+    padding: 10,
   },
   input: {
     backgroundColor: '#888888',
