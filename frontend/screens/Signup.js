@@ -7,6 +7,14 @@ import {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword} fro
 import {app} from '../firebaseConfig.js'
 import {getFirestore,addDoc,collection} from 'firebase/firestore'
 
+const languages = {'English': 'en', 'Assamese': 'as', 'Bangla': 'bn', 
+'Boro': 'brx', 'Dogri': 'doi', 'Goan-Konkani': 'gom', 'Gujarati': 'gu', 
+'Hindi': 'hi', 'Kannada': 'kn', 'Kashmiri (Arabic)': 'ks', 
+'Kashmiri (Devanagari)': 'ks_Deva', 'Maithili': 'mai', 'Malayalam': 'ml', 
+'Manipuri (Meitei)': 'mni', 'Manipuri (Bengali)': 'mni_Beng', 'Marathi': 'mr', 
+'Nepali': 'ne', 'Odia': 'or', 'Panjabi': 'pa', 'Sanskrit': 'sa', 'Santali': 'sat', 
+'Sindhi (Arabic)': 'sd', 'Sindhi (Devanagari)': 'sd_Deva', 'Tamil': 'ta', 'Telugu': 'te', 'Urdu': 'ur'}
+
 export default function SignUpScreen() {
 
      //Initialization
@@ -17,7 +25,8 @@ export default function SignUpScreen() {
     const [email,setEmail] = useState('');
     const [age,setAge] =useState('');
     const [location,setLocation] = useState('');
-    const [password,setPassword] = useState('')
+    const [password,setPassword] = useState('');
+    const [language,setLanguage] = useState('');
     const navigation = useNavigation();
     
     const cleanEmail = (email) => {
@@ -70,6 +79,18 @@ export default function SignUpScreen() {
           }
         }
       }
+
+      const renderLanguageOptions = () => {
+        return Object.entries(languages).map(([languageName, languageCode], index) => (
+          <Pressable key={index} style={styles.dropdownItem} onPress={() => {
+            console.log(languageCode); // Log the value of the selected key
+            setSelectedLanguage(languageName); // Set the selected language name
+          }}>
+            <Text style={styles.dropdownItemText}>{languageName}</Text>
+          </Pressable>
+        ));
+      };
+      
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: "#8CA9AD" }}>
         <ScrollView>
@@ -106,6 +127,11 @@ export default function SignUpScreen() {
                     placeholder={"Location"}
                     style={styles.input}
                 />
+                <Pressable >
+                <ScrollView style={styles.dropdown}>
+                  {renderLanguageOptions()}
+                </ScrollView>
+                </Pressable>
                 <MyTextInput
                     value={email}
                     onChange={setEmail}

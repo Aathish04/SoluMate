@@ -57,7 +57,7 @@ export default function LoginScreen() {
                     </View>
                     <Pressable
                         style={styles.button}
-                        onPress={()=>{navigation.navigate('Home')}}>
+                        onPress={gohome}>
                         <Text style={styles.buttonText}>Login</Text>
                     </Pressable>
                     <Text style={{ color: '#112A46' }}> Don't have an account? </Text>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef} from 'react';
 import { SafeAreaView, View, Text, TextInput, TouchableOpacity, ScrollView, StyleSheet, Pressable, Alert } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { Audio } from 'expo-av';
@@ -20,7 +20,12 @@ const ChatPage = () => {
   const [timeElapsed, setTimeElapsed] = useState(0);
   const navigation = useNavigation()
   const [response_, setResponse_] = useState('');
+  const scrollViewRef = useRef();
 
+  useEffect(() => {
+    // Whenever messages update, scroll to the bottom
+    scrollViewRef.current?.scrollToEnd({ animated: true });
+  }, [messages]);
 
 
   useEffect(() => {
@@ -109,7 +114,10 @@ const ChatPage = () => {
         </Pressable>
       </View>
       <Text style={styles.header}>AI Voice Chat</Text>
-      <ScrollView style={styles.messagesContainer}>
+      <ScrollView style={styles.messagesContainer}
+       ref={scrollViewRef} // Attach the ref to the ScrollView
+       onContentSizeChange={() => scrollViewRef.current?.scrollToEnd({ animated: true })}
+  >
         {messages.map((message, index) => (
           <TouchableOpacity key={index} onPress={() => message.uri && playSound(message.uri)}>
             <View style={[styles.message, message.sender === 'user' ? styles.userMessage : styles.aiMessage]}>
@@ -174,6 +182,9 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: '#112A46',
     backgroundColor: '#F1EBE5',
+    paddingBottom:25,
+
+    
   },
   messagesContainer: {
     flex: 1,
@@ -185,7 +196,8 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 10,
     marginVertical: 5,
-    flexDirection: 'row'
+    flexDirection: 'row',
+    marginBottom:20,
   },
   userMessage: {
     alignSelf: 'flex-end',

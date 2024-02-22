@@ -9,23 +9,25 @@ import ChatPage from './screens/ChatPage.js';
 import HomePage from './screens/Home.js';
 import Voice from './screens/Voice.js';
 import Community from './screens/CommunityPage.js';
+import Profile from './screens/Profile.js';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { app } from './firebaseConfig';
 import { useEffect,useState} from 'react';
 import { ActivityIndicator } from 'react-native';
 
 const Stack = createStackNavigator();
+
 export default function App() {
   const [user, setUser] = useState(null);
   const [initialRouteName, setInitialRouteName] = useState('Login'); // Default to 'Login'
-  const [loading,setLoading]= useState(true)
+  const [loading,setLoading]= useState(false)
 
   useEffect(() => {
     const auth = getAuth(app);
     const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
       if (currentUser) {
         setUser(currentUser);
-        setLoading(false);
+        //setLoading(false);
     } else {
         setUser(null);
     }
@@ -46,7 +48,7 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator initialRouteName={initialRouteName} screenOptions={{
         headerShown: false,
-        gestureEnabled: true,
+        gestureEnabled: false,
         ...TransitionPresets.ModalFadeTransition, // Apply smooth slide transition
       }}>
       {!user ? (
@@ -54,7 +56,6 @@ export default function App() {
         <Stack.Screen name='Login' component={LoginScreen} options={{headerShown: false}}/>
            <Stack.Screen name='SignUp' component={SignUpScreen} options={{headerShown: false}}/>
      
-        
     </>
       ):(
         <>
@@ -62,6 +63,7 @@ export default function App() {
         <Stack.Screen name='Chat' component={ChatPage} options={{headerShown: false}}/>
         <Stack.Screen name='Voice' component={Voice} options={{headerShown: false}}/>
         <Stack.Screen name='Community' component={Community} options={{headerShown:false}}/>
+        <Stack.Screen name='Profile' component={Profile} options={{headerShown:false}}/>
        </>
       )}
    </Stack.Navigator>

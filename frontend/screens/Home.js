@@ -12,14 +12,6 @@ const HomePage = () => {
 
     <View style={styles.container}>
 
-<View style={styles.backbutton}>
-            <Pressable
-                onPress={() => {
-                    navigation.navigate('Login')
-                }}>    
-               <Ionicons name="arrow-back-outline" size={32} color="white" />
-            </Pressable>
-            </View>
 
       <View style={styles.content}>
        <NavigationBar/>
@@ -28,7 +20,7 @@ const HomePage = () => {
        
       </View>
       <View style={styles.footer}>
-        <Text style={styles.footerText}>OpenHacks - © 2024 Solumate</Text>
+        <Text style={styles.footerText}>OpenHack - © 2024 Solumate</Text>
       </View>
 
     </View>

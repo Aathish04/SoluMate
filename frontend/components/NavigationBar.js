@@ -22,6 +22,10 @@ export default function NavigationBar() {
                 <Ionicons name="mic-outline" size={32} color="black" />
                 <Text style ={styles.caption}>Voice2Text</Text>
             </TouchableOpacity>
+            <TouchableOpacity style={styles.nav} onPress={() => navigation.navigate('Profile')}>
+            <Ionicons name="person-outline" size={32} color="black" />
+                <Text style ={styles.caption}>Profile</Text>
+            </TouchableOpacity>
         </View>
     );
 }
