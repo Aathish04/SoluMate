@@ -3,3 +3,4 @@ pathway
 litellm
 sentence_transformers
 fastapi
+uvicorn
