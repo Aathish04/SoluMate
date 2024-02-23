@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, Dimensions, ScrollView } from 'react-native';
 import { PieChart } from 'react-native-chart-kit';
 
-const Pie = ({ attribute }) => {
+const Pie = ({ attribute, title }) => {
   const [chartData, setChartData] = useState([]);
 
   useEffect(() => {
@@ -21,7 +21,7 @@ const Pie = ({ attribute }) => {
 
         const pieChartData = data.map((item, index) => ({
           name: item.ministry_department_state,
-          population: parseInt(item['attribute'], 10),
+          population: parseInt(item[attribute], 10),
           color: pieChartColors[index % pieChartColors.length],
         }));
 
@@ -35,8 +35,9 @@ const Pie = ({ attribute }) => {
   }, []);
 
   return (
-      <View>
-      <Text style={styles.title}>Total Pending Cases by Ministry/Department</Text>
+      <View style={{margin: 20, marginTop:100}}>
+        
+      <Text style={styles.title}>{title}</Text>
       <PieChart
         data={chartData}
         width={660}
@@ -70,8 +71,8 @@ const styles = StyleSheet.create({
     marginVertical: 20,
   },
   title: {
-    fontSize: 16,
-    fontWeight: 'bold',
+    fontSize: 20,
+    fontWeight: '900',
     textAlign: 'center',
     marginBottom: 8,
   },
