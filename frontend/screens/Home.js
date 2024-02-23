@@ -3,10 +3,19 @@ import { View, Text, StyleSheet, Pressable } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import NavigationBar from '../components/NavigationBar';
 import { useNavigation } from '@react-navigation/native';
+import {useState,useEffect} from 'react';
+import { getAuth, signOut } from 'firebase/auth';
+import { getFirestore, collection, query, where, getDocs } from 'firebase/firestore';
+import { app } from '../firebaseConfig';
 
 const HomePage = () => {
+  const auth = getAuth(app);
+  const db = getFirestore(app);
   const navigation = useNavigation();
+  const [currentUser, setCurrentUser] = useState(null);
+  const [userData, setUserData] = useState('');
 
+  
 
   return (
 

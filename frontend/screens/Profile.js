@@ -11,7 +11,7 @@ export default function Profile() {
   const db = getFirestore(app);
   const navigation = useNavigation();
   const [currentUser, setCurrentUser] = useState(null);
-  const [userData, setUserData] = useState(null);
+  const [userData, setUserData] = useState('');
 
   const getUserData = async (userID) => {
     const q = query(collection(db, 'users'), where('userid', '==', userID));
@@ -26,13 +26,14 @@ export default function Profile() {
       if (user) {
         setCurrentUser(user.uid);
         getUserData(user.uid);
+        console.log("hi")
+        console.log(userData)
       } else {
         setCurrentUser(null);
       }
     });
     return () => unsubscribe();
   }, []);
-
   const signout = () => {
     signOut(auth).then(() => {
       navigation.replace('Login');
@@ -51,7 +52,32 @@ export default function Profile() {
         </TouchableOpacity>
         <Text style={styles.headerText}>Profile</Text>
       </View>
-      
+      <View style={{
+        justifyContent:"center",
+        alignItems:"left",
+        marginTop:140,
+        marginBottom:-190,
+        marginLeft:25,
+      }}>
+         <View>
+      <View style={styles.row}>
+        <Text style={styles.label}>Name:</Text>
+        <Text style={styles.value}>{userData.name}</Text>
+      </View>
+      <View style={styles.row}>
+        <Text style={styles.label}>Age:</Text>
+        <Text style={styles.value}>{userData.age}</Text>
+      </View>
+      <View style={styles.row}>
+        <Text style={styles.label}>Location:</Text>
+        <Text style={styles.value}>{userData.location}</Text>
+      </View>
+      <View style={styles.row}>
+        <Text style={styles.label}>Email:</Text>
+        <Text style={styles.value}>{userData.email}</Text>
+      </View>
+    </View>
+      </View>
       <ScrollView contentContainerStyle={styles.content}>
         {/* Your content here */}
         <TouchableOpacity style={styles.logoutButton} onPress={signout}>
@@ -80,7 +106,8 @@ const styles = StyleSheet.create({
     color: 'black',
     marginLeft: 150,
     marginTop:60,
-    fontSize: 20,
+    fontSize: 25,
+    fontWeight:'bold',
   },
   backButton: {
     position: 'absolute',
@@ -113,5 +140,17 @@ const styles = StyleSheet.create({
   },
   footerText: {
     color: 'white',
+  },
+  row: {
+    flexDirection: 'row', // Aligns items in a row
+    margin: 10,
+  },
+  label: {
+    fontSize: 20,
+    fontWeight: 'bold', // Optional: adds boldness to label
+    marginRight: 10, // Adjusts space between label and value
+  },
+  value: {
+    fontSize: 20, // Matches label size for consistency
   },
 });

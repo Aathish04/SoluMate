@@ -23,7 +23,7 @@ const ChatPage = () => {
   const navigation = useNavigation();
   //dropdown
   const [showPopup, setShowPopup] = useState(false);
-  const [selectedLanguage, setSelectedLanguage] = useState(languages[0]);
+  const [selectedLanguage, setSelectedLanguage] = useState('Choose language');
   const fadeAnim = useRef(new Animated.Value(0)).current; // for fade-in animation
 
   const openPopup = () => {
@@ -58,13 +58,27 @@ const ChatPage = () => {
     ));
   };
 
+  let dummy = {
+    'freetext' : "Hii guys",
+    'pasthistory' : [],
+    'navigation' :"This is some shit"
+  }
+
 
   const fetchData = async () => {
     try {
-      const response = await fetch('https://a430-115-244-221-146.ngrok-free.app/');
-      const data = await response.json();
-      console.log(data.message);
-      setResponse_(data.message);
+      //const response = await fetch('https://a430-115-244-221-146.ngrok-free.app/');
+      //const data = await response.json();
+      
+      
+      let dummyresponse = dummy.freetext;
+      if (dummy.navigation != '')
+      {
+        dummyresponse = dummyresponse + ' Please follow the given instructions for navigation: '+  dummy.navigation;
+      }
+
+      console.log(dummyresponse);
+      setResponse_(dummyresponse);
     } catch (error) {
       console.error('Error fetching data:', error);
     }
@@ -118,7 +132,7 @@ const ChatPage = () => {
         ))}
       </ScrollView>
       <TouchableOpacity onPress={openPopup} style={styles.languageButton}>
-          <Text style={styles.languageButtonText}>Choose Language</Text>
+          <Text style={styles.languageButtonText}>{selectedLanguage}</Text>
         </TouchableOpacity>
         {showPopup && (
         <Animated.View style={[styles.popupOverlay, {opacity: fadeAnim}]}>

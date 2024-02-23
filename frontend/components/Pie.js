@@ -49,7 +49,7 @@ const Pie = ({ attribute, title }) => {
         }}
         accessor="population"
         backgroundColor="transparent"
-        paddingLeft="15"
+       
         center={[10, 10]}
         absolute
       />
@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
     alignContent:'left',
     alignItems: 'left',
-    marginLeft:90
+    marginLeft:70,
   },
   legendItem: {
     flexDirection: 'row',
