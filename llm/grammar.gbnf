@@ -1,6 +1,6 @@
 root ::= queryOutput
 complaintRegistrationModes ::= "\"InPerson\"" | "\"Email\"" | "\"Post\"" | "\"OnlineForm\""
-queryOutput ::= "{"   ws   "\"destinationLocation\":"   ws   string   ","   ws   "\"detailedResponseText\":"   ws   string   ","   ws   "\"complaintRegistrationMode\":"   ws   complaintRegistrationModes   "}"
+queryOutput ::= "{"   ws   "\"destinationLocation\":"   ws   string   ","   ws   "\"complaintRegistrationMode\":"   ws   complaintRegistrationModeslist   "}"
 queryOutputlist ::= "[]" | "["   ws   queryOutput   (","   ws   queryOutput)*   "]"
 string ::= "\""   ([^"]*)   "\""
 boolean ::= "true" | "false"
