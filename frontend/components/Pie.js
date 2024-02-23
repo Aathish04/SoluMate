@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, Dimensions, ScrollView } from 'react-native';
 import { PieChart } from 'react-native-chart-kit';
-import Pie from '../components/Pie';
 
-const Stats = () => {
+const Pie = ({ attribute }) => {
   const [chartData, setChartData] = useState([]);
 
   useEffect(() => {
@@ -22,7 +21,7 @@ const Stats = () => {
 
         const pieChartData = data.map((item, index) => ({
           name: item.ministry_department_state,
-          population: parseInt(item.total_pending_as_on_01_11_2019, 10),
+          population: parseInt(item['attribute'], 10),
           color: pieChartColors[index % pieChartColors.length],
         }));
 
@@ -36,10 +35,33 @@ const Stats = () => {
   }, []);
 
   return (
-    <ScrollView style={styles.container}>
-      <Pie attribute={}
-      
-    </ScrollView>
+      <View>
+      <Text style={styles.title}>Total Pending Cases by Ministry/Department</Text>
+      <PieChart
+        data={chartData}
+        width={660}
+        height={220}
+        
+        chartConfig={{
+          backgroundColor: 'transparent',
+          color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
+        }}
+        accessor="population"
+        backgroundColor="transparent"
+        paddingLeft="15"
+        center={[10, 10]}
+        absolute
+      />
+      {/* Custom Legend */}
+      <View style={styles.legend}>
+        {chartData.map((item, index) => (
+          <View key={index} style={styles.legendItem}>
+            <View style={[styles.colorSwatch, { backgroundColor: item.color }]} />
+            <Text style={styles.legendLabel}>{item.name}</Text>
+          </View>
+        ))}
+      </View>
+      </View>
   );
 };
 
@@ -82,4 +104,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Stats;
+export default Pie;
