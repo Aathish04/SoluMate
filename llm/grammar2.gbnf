@@ -1,0 +1,10 @@
+root ::= ParserOutput
+ComplaintRegistrationModeType ::= "\"InPerson\"" | "\"Online\""
+ParserOutput ::= "{"   ws   "\"ComplainRegistrationMode\":"   ws   ComplaintRegistrationModeType   ","   ws   "\"LocationofOrganization\":"   ws   string   "}"
+ParserOutputlist ::= "[]" | "["   ws   ParserOutput   (","   ws   ParserOutput)*   "]"
+string ::= "\""   ([^"]*)   "\""
+boolean ::= "true" | "false"
+ws ::= [ \t\n]*
+number ::= [0-9]+   "."?   [0-9]*
+stringlist ::= "["   ws   "]" | "["   ws   string   (","   ws   string)*   ws   "]"
+numberlist ::= "["   ws   "]" | "["   ws   string   (","   ws   number)*   ws   "]"

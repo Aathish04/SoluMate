@@ -100,7 +100,7 @@ def run(
     @pw.udf
     def build_prompt(documents, query):
         docs_str = "\n".join(documents)
-        prompt = f"Given the following data and all previous information:\n {docs_str} \nAnswer the following query in detail: {query} "
+        prompt = f"Given the following data and all previous information:\n {docs_str} \nSupply the approproiate values for the json keys ComplainRegistrationMode and LocationofOrganization: {query} "
         return prompt
     
     @pw.udf
@@ -115,9 +115,10 @@ def run(
     )
 
     model = LiteLLMChat(
-        model="custom_openai/mistral",
-        api_base=os.environ["LLM_API_BASE"])
+        model="custom/mistral",
+        api_base="http://localhost:8000/v1/completions")
 
+    # raise Exception(str(model.kwargs))
     responses = prompt.select(
         query_id=pw.this.id,
         result=model(prompt_chat_multi_qa(pw.this.prompt),max_tokens=0),
