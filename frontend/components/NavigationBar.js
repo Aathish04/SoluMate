@@ -26,6 +26,10 @@ export default function NavigationBar() {
             <Ionicons name="person-outline" size={32} color="black" />
                 <Text style ={styles.caption}>Profile</Text>
             </TouchableOpacity>
+            <TouchableOpacity style={styles.nav} onPress={() => navigation.navigate('Stats')}>
+            <Ionicons name="stats-chart-outline" size={32} color="black" />
+                <Text style ={styles.caption}>Stats</Text>
+            </TouchableOpacity>
         </View>
     );
 }

@@ -14,6 +14,7 @@ import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { app } from './firebaseConfig';
 import { useEffect,useState} from 'react';
 import { ActivityIndicator } from 'react-native';
+import Stats from './screens/Stats.js';
 
 const Stack = createStackNavigator();
 
@@ -64,6 +65,7 @@ export default function App() {
         <Stack.Screen name='Voice' component={Voice} options={{headerShown: false}}/>
         <Stack.Screen name='Community' component={Community} options={{headerShown:false}}/>
         <Stack.Screen name='Profile' component={Profile} options={{headerShown:false}}/>
+        <Stack.Screen name='Stats' component={Stats} options={{headerShown:false}}/>
        </>
       )}
    </Stack.Navigator>
