@@ -1,8 +1,11 @@
 import json
+import os
 import requests
 from fastapi import FastAPI,Request
 from fastapi.middleware.cors import CORSMiddleware
+from dotenv import load_dotenv
 
+load_dotenv()
 app = FastAPI()
 
 # Allow all origins
@@ -16,8 +19,8 @@ app.add_middleware(
 
 # Define a route using a decorator
 @app.get("/")
-def read_root():
-    return {"message": "Hello"}
+async def read_root():
+    return await SendRequestLLM()
 
 
 # Define another route with a path parameter
@@ -124,3 +127,25 @@ async def stt(request: Request):
 
     response = requests.post('https://demo-api.models.ai4bharat.org/inference/asr/conformer', headers=headers, json=json_data)
     return response.json()
+
+async def SendRequestLLM():
+    text = "The grievance cell for tamil nadu is located in adayar chennai. You will have to travel there and file our complaint"
+    prompt = f"Give the JSON of complaintRegistrationModes destinationLocation detailedResponseText given the following text: {text}",
+    with open("llm/grammar.gbnf") as f:
+        grammar = f.read()
+
+    res = requests.post(
+        url=os.getenv("LLM_API_BASE")+"/completions",
+        json={
+        "prompt" : prompt,
+        "grammar" : grammar,
+        "max_tokens":0 # 0 is infinity
+        }
+    )
+    outjson = res.json()["choices"][0]["text"]
+    
+    print(outjson)
+    outjson = json.loads(outjson)
+    return outjson
+
+    

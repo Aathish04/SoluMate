@@ -1,7 +1,6 @@
-root ::= queryOutput
-complaintRegistrationModes ::= "\"InPerson\"" | "\"Email\"" | "\"Post\"" | "\"OnlineForm\""
-queryOutput ::= "{"   ws   "\"destinationLocation\":"   ws   string   ","   ws   "\"complaintRegistrationMode\":"   ws   complaintRegistrationModeslist   "}"
-queryOutputlist ::= "[]" | "["   ws   queryOutput   (","   ws   queryOutput)*   "]"
+root ::= ParserOutput
+ParserOutput ::= "{"   ws   "\"ComplainRegistrationMode\":"   ws   string   ","   ws   "\"LocationofOrganization\":"   ws   string   "}"
+ParserOutputlist ::= "[]" | "["   ws   ParserOutput   (","   ws   ParserOutput)*   "]"
 string ::= "\""   ([^"]*)   "\""
 boolean ::= "true" | "false"
 ws ::= [ \t\n]*
