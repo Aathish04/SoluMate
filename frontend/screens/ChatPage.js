@@ -6,6 +6,10 @@ import { useNavigation } from '@react-navigation/native';
 import MyTextInput from "../components/Textbox.js";
 import languageDrop from '../components/languageDrop.js';
 import { Animated } from 'react-native';
+import { getAuth, signOut } from 'firebase/auth';
+import { getFirestore, collection, query, where, getDocs } from 'firebase/firestore';
+import { app } from '../firebaseConfig';
+
 
 const languages = {'English': 'en', 'Assamese': 'as', 'Bangla': 'bn', 
 'Boro': 'brx', 'Dogri': 'doi', 'Goan-Konkani': 'gom', 'Gujarati': 'gu', 
@@ -16,16 +20,46 @@ const languages = {'English': 'en', 'Assamese': 'as', 'Bangla': 'bn',
 'Sindhi (Arabic)': 'sd', 'Sindhi (Devanagari)': 'sd_Deva', 'Tamil': 'ta', 'Telugu': 'te', 'Urdu': 'ur'}
 
 const ChatPage = () => {
+  const auth = getAuth(app);
+  const db = getFirestore(app);
   const [messages, setMessages] = useState([]);
   const [inputText, setInputText] = useState('');
-  const [response_, setResponse_] = useState('');
+  const [response_, setResponse_] = useState([]);
   const scrollViewRef = useRef();
   const navigation = useNavigation();
+  const [latestUserMessage, setLatestUserMessage] = useState('');
+  const [currentUser, setCurrentUser] = useState(null);
+  const [userData, setUserData] = useState('');
+
   //dropdown
   const [showPopup, setShowPopup] = useState(false);
   const [selectedLanguage, setSelectedLanguage] = useState('Choose language');
   const fadeAnim = useRef(new Animated.Value(0)).current; // for fade-in animation
 
+  const getUserData = async (userID) => {
+    const q = query(collection(db, 'users'), where('userid', '==', userID));
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+      setUserData(doc.data());
+    });
+  };
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged(async (user) => {
+      if (user) {
+        setCurrentUser(user.uid);
+        getUserData(user.uid);
+        console.log("hi")
+        console.log(userData)
+      } else {
+        setCurrentUser(null);
+      }
+    });
+    return () => unsubscribe();
+  }, []);
+
+  const dummyjson =  {"Age": userData.age, "Language": languages[selectedLanguage], "Location": userData.location, "messageContent": inputText, "mimetype": "text"}
+    
   const openPopup = () => {
     setShowPopup(true);
     // Fade-in animation
@@ -59,10 +93,10 @@ const ChatPage = () => {
   };
 
   let dummy = {
-    'freetext' : "Hii guys",
-    'pasthistory' : [],
-    'navigation' :"This is some shit"
-  }
+    'freetext' : "சென்னையில் உள்ள பல பள்ளங்கள் குறித்த புகாரை பதிவு செய்யவும், தமிழ்நாடு குழித்துறை புகார் குறை தீர்க்கும் முறையைப் பயன்படுத்தி இந்த படிப்படியான வழிமுறைகளைப் பின்பற்றவும்:\n\n1. இணையதளத்தைப் பார்வையிடவும்: https://erp.chennaicorporation.gov.in/pgr/citizen/BeforeReg.do\n2. திட்டத்தில் தேவையான விவரங்களை நிரப்பவும்:\n\t* 'complainantFirstName', 'complainantLastname': உங்கள் முதல் மற்றும் கடைசி பெயரை உள்ளிடவும்.\n\t* 'complainantAddress1', 'complainantAddress2': உங்கள் குடியிருப்பு முகவரியை உள்ளிடவும் சென்னை.\n\t* 'complainantPinCode', 'complainantTelephone': உங்கள் பின் குறியீடு மற்றும் தொடர்பு எண்ணை உள்ளிடவும்.\n\t* 'complainantEmail': உங்கள் மின்னஞ்சல் முகவரியை உள்ளிடவும்.\n\t* 'gender': இதிலிருந்து உங்கள் பாலினத்தைத் தேர்ந்தெடுக்கவும் ரேடியோ பொத்தான் விருப்பங்கள்.\n\t* 'complainantMobileTelephone': உங்கள் மொபைல் எண்ணை உள்ளிடவும்.\n\t* 'புகார் மின்னஞ்சல்' என்பது படி 2c இல் உள்ளிடப்பட்டது போல் இருக்க வேண்டும்.\n3. உங்களுக்கு விருப்பமான மொழியைத் தேர்ந்தெடுத்து, 'generateOtp' பொத்தானின் கீழ் 'Generate OTP' என்பதைக் கிளிக் செய்யவும்.\n4. உங்கள் மொபைல் எண்ணில் OTP (ஒரு முறை கடவுச்சொல்) பெறுவீர்கள். 'txtSMSOtp' என்பதன் கீழ் வழங்கப்பட்ட இடத்தில் அதை உள்ளிடவும்.\n5. 'validateOtp' என்பதன் கீழ் உள்ள 'Validate OTP' பட்டனைக் கிளிக் செய்யவும்.\n6. கொடுக்கப்பட்ட விருப்பங்களிலிருந்து, உங்கள் புகார் வகையாக 'complaintype12' (Pothole) என்பதைத் தேர்ந்தெடுக்கவும். இந்தப் புகார் வகைக்காகக் கேட்கப்பட்டுள்ள கூடுதல் விவரங்களை நிரப்பவும்.\n7. 'complaintTitle' புலத்தில், உங்கள் புகாரின் சுருக்கமான தலைப்பை வழங்கவும், அதாவது \"சென்னையில் பல குட்டைகள்\"\n8. 'complaintDetails' புலத்தில் பல குழிகளைப் பற்றிய உங்கள் புகாரை விரிவாக விவரிக்கவும். பள்ளங்களால் பாதிக்கப்பட்ட இடங்கள் மற்றும் பகுதிகளைக் குறிப்பிடவும்.\n9. குழிகளின் படங்களை இணைக்க விரும்பினால், 'படம்' புலத்தில் கிளிக் செய்து, தொடர்புடைய கோப்புகளைத் தேர்ந்தெடுக்கவும்.\n10. மற்ற புலங்களை காலியாக விடவும் அல்லது உங்கள் விருப்பப்படி விருப்பங்களை தேர்வு செய்யவும்.\n11. நீங்கள் அநாமதேயமாகப் பதிவு செய்ய விரும்பினால் 'anonReg' க்கு அடுத்துள்ள பெட்டியைத் தேர்வுசெய்யவும், இருப்பினும் தொடர்புத் தகவலை வழங்குவது விரைவான தீர்மானத்திற்கு உதவும்.\n12. உங்கள் புகாரைச் சமர்ப்பிக்க, 'பொத்தான்3' கீழ் உள்ள 'சமர்ப்பி' பொத்தானைக் கிளிக் செய்யவும்.",
+   'pasthistory' : [],
+    'navigation' :""
+    }
 
 
   const fetchData = async () => {
@@ -77,36 +111,72 @@ const ChatPage = () => {
         dummyresponse = dummyresponse + ' Please follow the given instructions for navigation: '+  dummy.navigation;
       }
 
-      console.log(dummyresponse);
+  
       setResponse_(dummyresponse);
+      return dummyresponse;
     } catch (error) {
       console.error('Error fetching data:', error);
     }
   };
   
   useEffect(() => {
+    console.log("Updated response_:", response_);
+  }, [response_]);
+
+  useEffect(() => {
     // Whenever messages update, scroll to the bottom
     scrollViewRef.current?.scrollToEnd({ animated: true });
   }, [messages]);
 
 
-  const handleSend = () => {
-    if (inputText.trim()) {
-      const newMessage = {id: Date.now(), text: inputText, sender: 'user'};
-      setMessages([...messages, newMessage]);
+  const handleSend = async () => {
+  if (inputText.trim()) {
+    const newMessage = { id: Date.now(), text: inputText, sender: 'user' };
+    sendJsonToFastAPI(dummyjson)
+    console.log(dummyjson)
+    
+   // console.log("pRINT",latestUserMessage)
+    setMessages([...messages, newMessage]);
+
+  }
+    setInputText('');
+
+   // const fetchedResponse = await fetchData();
+
+    console.log("This is data:",response_)
+    // Now, set the AI response after fetchData has completed
+    setTimeout(() => {
+      const aiResponse = { id: Date.now()+1 , text: response_, sender: 'ai' };
+      setMessages(currentMessages => [...currentMessages, aiResponse]);
+    }, 2000); // 2000 milliseconds = 2 seconds
   
-      setInputText('');
-  
-      // Adding a 2-second delay before setting the AI response
-      setTimeout(() => {
-        const aiResponse = {id: Date.now() + 1, text:response_, sender: 'ai'};
-        setMessages(currentMessages => [...currentMessages, aiResponse]);
-      }, 2000); // 2000 milliseconds = 2 seconds
+};
+
+
+const sendJsonToFastAPI = async (jsonData) => {
+  try {
+    const response = await fetch('https://d37f-2401-4900-65b8-a0bc-c47b-216-187c-5685.ngrok-free.app/Generator/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(jsonData),
+    });
+
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
     }
 
-    fetchData()
-  };
-  
+    const data = await response.json();
+    // Assuming the response JSON has a key that contains the actual text message you want to display.
+    // Adjust 'textKey' to the actual key that contains the message.
+    setResponse_(data.freetext || 'No response text found.');
+    console.log('Response data:', data);
+  } catch (error) {
+    console.error('Error:', error);
+    setResponse_('Error fetching response');
+  }
+};
 
   return (
     <SafeAreaView style={{flex: 1, backgroundColor:"#222222"}}>
@@ -127,7 +197,9 @@ const ChatPage = () => {
       >
         {messages.map(message => (
           <View key={message.id} style={[styles.message, message.sender === 'user' ? styles.userMessage : styles.aiMessage]}>
+            
             <Text style={styles.messageText}>{message.text}</Text>
+            
           </View>
         ))}
       </ScrollView>
