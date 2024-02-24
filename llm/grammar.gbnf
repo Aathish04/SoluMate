@@ -1,5 +1,6 @@
 root ::= ParserOutput
-ParserOutput ::= "{"   ws   "\"ComplainRegistrationMode\":"   ws   string   ","   ws   "\"LocationofOrganization\":"   ws   string   "}"
+ComplaintRegistrationModeType ::= "\"InPerson\"" | "\"Online\""
+ParserOutput ::= "{"   ws   "\"ComplainRegistrationMode\":"   ws   ComplaintRegistrationModeType   ","   ws   "\"LocationofOrganization\":"   ws   string   "}"
 ParserOutputlist ::= "[]" | "["   ws   ParserOutput   (","   ws   ParserOutput)*   "]"
 string ::= "\""   ([^"]*)   "\""
 boolean ::= "true" | "false"
