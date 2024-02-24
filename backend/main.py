@@ -4,6 +4,7 @@ import requests
 from fastapi import FastAPI,Request
 from fastapi.middleware.cors import CORSMiddleware
 from dotenv import load_dotenv
+import pyttsx3
 
 load_dotenv()
 app = FastAPI()
@@ -20,12 +21,13 @@ app.add_middleware(
 # Define a route using a decorator
 @app.get("/")
 async def read_root():
+    print("hello")
     return await SendRequestLLM()
 
 
 # Define another route with a path parameter
 @app.get("/translate")
-def preftoen(inlan,outlan,messageContent):
+async def preftoen(inlan,outlan,messageContent):
  
     text = messageContent
 
@@ -78,13 +80,14 @@ def preftoen(inlan,outlan,messageContent):
     # )
     return json.loads(response.text)
 
-@app.post("/stt")
-async def stt(request: Request):
-    body = await request.body()
-    jsonip = json.loads(body)
+
+async def stt(lan,audio):
+    print("\n\n what ma dis \n \n")
+    # body = await request.body()
+    # jsonip = json.loads(body)
     
-    lan = jsonip["Language"]
-    audio = jsonip["messageContent"]
+    # lan = jsonip["Language"]
+    # audio = jsonip["messageContent"]
 
     headers = {
         'authority': 'demo-api.models.ai4bharat.org',
@@ -124,11 +127,13 @@ async def stt(request: Request):
             'dataTracking': True,
         },
     }
-
+    print("\n\n what ma dis \n \n")
     response = requests.post('https://demo-api.models.ai4bharat.org/inference/asr/conformer', headers=headers, json=json_data)
+    print("\n\n what ma dis \n \n")
     return response.json()
 
-async def SendRequestLLM():
+async def SendRequesttoParser():
+    # 
     text = "The grievance cell for tamil nadu is located in adayar chennai. You will have to travel there and file our complaint"
     prompt = f"Give the JSON of complaintRegistrationModes destinationLocation detailedResponseText given the following text: {text}",
     with open("llm/grammar.gbnf") as f:
@@ -148,4 +153,89 @@ async def SendRequestLLM():
     outjson = json.loads(outjson)
     return outjson
 
+@app.post("/Generator")
+async def SendRequesttoGenerator(request : Request):
+    body = await request.body()
+    print(body)
+    jsonip = json.loads(body)
+    Language = jsonip["Language"]
+    Location = jsonip["Location"]
+    Age= jsonip["Age"]
+    messageContent = jsonip["messageContent"]
+    mimetype=jsonip["mimetype"]
+
+    headers = {
+    'accept': 'application/json',
+    'content-type': 'application/x-www-form-urlencoded',
+    }
+
+    if mimetype!="text":
+        # audio
+        transcribedata = '{"user": "user", "query": messageContent}'
+        transcribedata = transcribedata.replace("messageContent",messageContent)
+
+        response = await stt(Language,messageContent)
+        messageContent = response["output"][0]["source"]
+
+    if Language!="en":
+        translatedata = '{"user": "user", "query": messageContent}'
+        translatedata = translatedata.replace("messageContent",messageContent)
+        response = await preftoen(outlan="en",inlan=Language,messageContent=messageContent)
+        # response=response.json()
+        messageContent = response["output"][0]["target"]
+        
+
+    # data = '{"user": "user", "query": messageContent}'
+    # data = data.replace("messageContent",messageContent+". The user's age is " + Age+" and they live in "+Location)
+    # response = requests.post(' http://192.168.82.184:6001/', headers=headers, data=data)
+    response={"freetext":messageContent+". The user's age is " + Age+" and they live in "+Location,"Navigation":None}
     
+    if mimetype!="text":
+        response = Sendtranscribedata(messageContent,Language)
+    
+    return response
+
+def Sendtranscribedata(messageContent, language):
+
+    request_url = "https://demo-api.models.ai4bharat.org/inference/tts"
+    headers = {
+    'authority': 'demo-api.models.ai4bharat.org',
+    'accept': '*/*',
+    'accept-language': 'en-GB,en-US;q=0.9,en;q=0.8',
+    'content-type': 'application/json',
+    'dnt': '1',
+    'origin': 'https://models.ai4bharat.org',
+    'referer': 'https://models.ai4bharat.org/',
+    'sec-ch-ua': '"Chromium";v="122", "Not(A:Brand";v="24", "Google Chrome";v="122"',
+    'sec-ch-ua-mobile': '?0',
+    'sec-ch-ua-platform': '"Windows"',
+    'sec-fetch-dest': 'empty',
+    'sec-fetch-mode': 'cors',
+    'sec-fetch-site': 'same-site',
+    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36',
+    }
+
+    json_data = {
+        'controlConfig': {
+            'dataTracking': True,
+        },
+        'input': [
+            {
+                'source': messageContent,
+            },
+        ],
+        'config': {
+            'gender': 'male',
+            'language': {
+                'sourceLanguage': language,
+            },
+        },
+    }
+        
+
+    response = requests.post('https://demo-api.models.ai4bharat.org/inference/tts', headers=headers, json=json_data)
+    f = open("file1.txt","w")
+    response = response.json()["audio"][0]["audioContent"]
+    return response
+
+
