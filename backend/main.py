@@ -82,7 +82,6 @@ async def preftoen(inlan,outlan,messageContent):
 
 
 async def stt(lan,audio):
-    print("\n\n what ma dis \n \n")
     # body = await request.body()
     # jsonip = json.loads(body)
     
@@ -127,9 +126,7 @@ async def stt(lan,audio):
             'dataTracking': True,
         },
     }
-    print("\n\n what ma dis \n \n")
     response = requests.post('https://demo-api.models.ai4bharat.org/inference/asr/conformer', headers=headers, json=json_data)
-    print("\n\n what ma dis \n \n")
     return response.json()
 
 async def SendRequesttoParser():
@@ -149,15 +146,14 @@ async def SendRequesttoParser():
     )
     outjson = res.json()["choices"][0]["text"]
     
-    print(outjson)
     outjson = json.loads(outjson)
     return outjson
 
 @app.post("/Generator")
 async def SendRequesttoGenerator(request : Request):
-    body = await request.body()
-    print(body)
-    jsonip = json.loads(body)
+    jsonip = await request.json()
+    # print(body)
+    # jsonip = json.loads(body)
     Language = jsonip["Language"]
     Location = jsonip["Location"]
     Age= jsonip["Age"]
@@ -175,6 +171,8 @@ async def SendRequesttoGenerator(request : Request):
         transcribedata = transcribedata.replace("messageContent",messageContent)
 
         response = await stt(Language,messageContent)
+        print(response)
+        print(response.text)
         messageContent = response["output"][0]["source"]
 
     if Language!="en":
@@ -182,20 +180,44 @@ async def SendRequesttoGenerator(request : Request):
         translatedata = translatedata.replace("messageContent",messageContent)
         response = await preftoen(outlan="en",inlan=Language,messageContent=messageContent)
         # response=response.json()
+        print(response)
         messageContent = response["output"][0]["target"]
         
 
-    # data = '{"user": "user", "query": messageContent}'
-    # data = data.replace("messageContent",messageContent+". The user's age is " + Age+" and they live in "+Location)
-    # response = requests.post(' http://192.168.82.184:6001/', headers=headers, data=data)
-    response={"freetext":messageContent+". The user's age is " + Age+" and they live in "+Location,"Navigation":None}
+    data = {"user": "user", "query": messageContent +f"The user's age is {Age} and they live in {Location}"}
+    data = json.dumps(data)
+    # data = data.replace(messageContent, '"' + "messageContent"+". The user's age is " + Age+" and they live in "+Location+'"')
+    print(data)
+
+    response =  requests.post('http://192.168.241.184:5001/', headers=headers, json=json.loads(data))
+    messageContent = response.text
+    response = response.text
     
+    
+    # response = "ho"
+    print(response)
+
+    # response={"freetext":messageContent+". The user's age is " + Age+" and they live in "+Location,"Navigation":None}
+    # response =  requests.post(' http://192.168.241.184:5001/', headers=headers, data=data)
+    if Language!="en":
+        translatedata = '{"user": "user", "query": messageContent}'
+        translatedata = translatedata.replace("messageContent",response)
+        response = await preftoen(outlan=Language,inlan="en",messageContent=messageContent)
+        # response=response.json()
+        print(response)
+        response = response["output"][0]["target"]
+        
     if mimetype!="text":
+        return
         response = Sendtranscribedata(messageContent,Language)
     
-    return response
+    
+    return {"freetext":response}
 
 def Sendtranscribedata(messageContent, language):
+    if language!="en":
+        #translate before audio convertion 
+        pass
 
     request_url = "https://demo-api.models.ai4bharat.org/inference/tts"
     headers = {
@@ -234,7 +256,7 @@ def Sendtranscribedata(messageContent, language):
         
 
     response = requests.post('https://demo-api.models.ai4bharat.org/inference/tts', headers=headers, json=json_data)
-    f = open("file1.txt","w")
+    # f = open("file1.txt","w")
     response = response.json()["audio"][0]["audioContent"]
     return response
 
