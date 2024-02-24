@@ -51,20 +51,21 @@ class QueryInputSchema(pw.Schema):
     query: str
     user: str
 
-os.environ["OPENAI_API_KEY"] = os.environ["LLM_API_KEY"]
 
 def run(
     *,
-    data_dir: str = os.environ.get(
-        "PATHWAY_DATA_DIR", "data"
-    ),
-    host: str = os.getenv("PATHWAY_BASEURL"),
-    port: int = int(os.getenv("PATHWAY_PORT")),
+    data_dir: str = "data",
+    host: str = "0.0.0.0",
+    port: int = 5001,
     embedder_locator: str = os.environ.get("EMBEDDER", "intfloat/e5-large-v2"),
     embedding_dimension: int = 1024,
+    max_tokens: int = 0,
     device: str = "cpu",
     **kwargs,
 ):
+    
+    # with open("/Users/aathishs/Projects/SoluMate/sample.log","w") as f:
+    #     f.write(host+str(port))
     embedder = SentenceTransformerEmbedder(model=embedder_locator, device=device)
     embedding_dimension = len(embedder.__wrapped__(""))
 
@@ -94,13 +95,13 @@ def run(
     )
 
     query_context = query + index.get_nearest_items(
-        query.vector, k=10, collapse_rows=True
+        query.vector, k=4, collapse_rows=True
     ).select(documents_list=pw.this.doc)
 
     @pw.udf
     def build_prompt(documents, query):
         docs_str = "\n".join(documents)
-        prompt = f"Given the following data and all previous information:\n {docs_str} \nSupply the approproiate values for the json keys ComplainRegistrationMode and LocationofOrganization: {query} "
+        prompt = f"Given the following data : \n {docs_str} \nAnswer the following query in detail, do not mention that the data was given to you. Do not use the short URL. Include alternatives if relevant and in the data: {query} "
         return prompt
     
     @pw.udf
@@ -115,10 +116,10 @@ def run(
     )
 
     model = LiteLLMChat(
-        model="custom/mistral",
-        api_base="http://localhost:8000/v1/completions")
+        model="custom_openai/mistral",
+        api_base="http://localhost:8000/v1",
+        api_key="NOT NEEDED")
 
-    # raise Exception(str(model.kwargs))
     responses = prompt.select(
         query_id=pw.this.id,
         result=model(prompt_chat_multi_qa(pw.this.prompt),max_tokens=0),
