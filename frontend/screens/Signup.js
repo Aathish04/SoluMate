@@ -64,6 +64,7 @@ export default function SignUpScreen() {
             email:email,
             location:location,
             age:age,
+            language:language,
           });
         }catch(error){
           const errorCode = error.code;
@@ -127,11 +128,12 @@ export default function SignUpScreen() {
                     placeholder={"Location"}
                     style={styles.input}
                 />
-                <Pressable >
-                <ScrollView style={styles.dropdown}>
-                  {renderLanguageOptions()}
-                </ScrollView>
-                </Pressable>
+                <MyTextInput
+                    value={language}
+                    onChange={setLanguage}
+                    placeholder={"Preffered Language"}
+                    style={styles.input}
+                />
                 <MyTextInput
                     value={email}
                     onChange={setEmail}
@@ -167,7 +169,7 @@ const styles = StyleSheet.create({
     },
     inputContainer: {
         width: '100%',
-
+        marginTop:-30,
     },
     input: {
         height: 40,

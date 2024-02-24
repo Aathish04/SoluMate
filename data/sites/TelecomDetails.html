@@ -1,0 +1,843 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><meta http-equiv="X-Frame-Options" content="SAMEORIGIN" /><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>
+	Telecom Consumer Complaints Monitoring System
+</title><link href="homecss/style.css" rel="stylesheet" type="text/css" />
+    <style>
+        body {
+            margin: 0;
+        }
+
+        .pageHeader {
+            margin-left: auto;
+            margin-right: auto;
+            width: 796px;
+            text-align: center;
+            height: 100px;
+        }
+
+        .colContainer {
+            margin-left: auto;
+            margin-right: auto;
+            width: 778px;
+            text-align: center;
+            background: none;
+        }
+
+        .pageFooter {
+            margin-left: auto;
+            margin-right: auto;
+            width: 778px;
+            text-align: center;
+            background-color: #0000B3;
+            text-decoration: none;
+            font-size: 0.7em;
+            font-family: Verdana;
+            color: White;
+            padding: auto;
+        }
+
+        .pageMenu {
+            float: left;
+            width: 175px;
+        }
+
+        #title {
+            color: #0000B3;
+            font-weight: bold;
+            font-size: 15px;
+            font-family: Arial;
+            text-align: center;
+        }
+
+        #pageContent {
+            margin-left: auto;
+            width: 600px;
+            float: right;
+            text-align: left;
+        }
+
+        .GridViewStyle {
+            font-family: Verdana;
+            font-size: .9em;
+            table-layout: auto;
+            border-collapse: collapse;
+            border: solid 2px black;
+            margin-right: 0px;
+            text-align: left;
+            background-color: #D7C8FD;
+            width: 650px;
+        }
+
+        .HeaderStyle {
+            background-position: center;
+            background-repeat: repeat-x;
+            background-color: #66B3FF;
+            padding: 5px;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        .PagerStyle {
+            background-position: center;
+            background-repeat: repeat-x;
+            background-color: #0000B3;
+            padding: 5px;
+            color: #FFFFFF;
+        }
+
+        .AlternateRowStyle {
+            background-color: Silver;
+        }
+
+        .rowStyle {
+            Color: #000066;
+        }
+
+        .footerStyle {
+            background-color: #66B3FF;
+            Color: #000066;
+        }
+
+        .selectedRowStyle {
+            background-color: #FFFF8A;
+            font-weight: bold;
+            Color: black;
+        }
+
+        .StaticMenuStyle {
+            background-color: #EAEAEA;
+        }
+
+        .StaticMenuItemStyle {
+            font-size: 0.7em;
+            color: #0000B3;
+            padding: 2px 5px 2px 5px;
+            text-align: left;
+        }
+
+        .StaticHoverStyle {
+            background-color: #0000B3;
+            color: White;
+        }
+
+        .DynamicMenuStyle {
+            border-color: #0000B3;
+            border-style: Solid;
+            border-width: 1px;
+            background-color: #EAEAEA !important;
+        }
+
+        .DynamicMenuItemStyle {
+            font-size: 0.7em;
+            color: #0000B3;
+            padding: 2px 5px 2px 5px;
+            text-align: left;
+        }
+
+        .DynamicHoverStyle {
+            background-color: #0000B3;
+            color: White;
+        }
+
+        .ButtonStyle {
+            text-decoration: none;
+            background-color: #f07700;
+            font-weight: bold;
+            font-size: .9em;
+            font-family: Verdana;
+            color: White;
+            height: 21px;
+        }
+
+        .ButtonfrontStyle {
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1em;
+            font-family: Book Antiqua;
+            color: White;
+            width: 120px;
+            background-color: #f07700;
+        }
+
+        .LabelTitle {
+            background-color: #086EAA;
+            font-family: Verdana;
+            font-size: 1.2em;
+            font-weight: bold;
+            color: White;
+        }
+
+        .LabelStyle {
+            text-align: center;
+            font-family: Verdana;
+            font-size: .7em;
+            color: #0000B3;
+            font-weight: bold;
+            margin-bottom: 0px;
+        }
+
+        .ErrorLabelStyle {
+            color: #0000B3;
+        }
+
+        .TextboxStyle {
+            text-align: left;
+            border-width: 1px;
+            border-style: solid;
+            width: 125px;
+            font-size: .9em;
+            font-family: Verdana;
+            border-color: #086EAA;
+        }
+
+        .HideStyle {
+            visibility: hidden;
+        }
+
+        .WaterMark {
+            background-color: Lime;
+            color: Navy;
+        }
+
+        .LoginStyle {
+            border: 1px solid #0000B3;
+            background-color: #EAEAEA;
+        }
+
+        .formbackground {
+            margin: 0px;
+            padding: 0px;
+            background-color: #EEEEEE;
+            font-family: Verdana;
+            font-size: 0.8em;
+            font-weight: bold;
+        }
+
+        .linksheader {
+            background-color: #D7C8FD;
+            margin-left: auto;
+            margin-right: auto;
+            width: 778px;
+            text-align: center;
+            font-size: .7em;
+            font-family: Verdana;
+        }
+
+        .ddlStyle {
+            border-width: 1px;
+            border-style: solid;
+            font-size: .9em;
+            font-family: Verdana;
+        }
+
+        .popupStyle {
+            border-width: 3px;
+            border-style: solid;
+            background-color: #FFFFCC;
+            font-family: Verdana;
+            font-size: 0.9em;
+            border-color: Black;
+            position: relative;
+        }
+
+        .labelmsgstyle {
+            color: Red;
+            font-family: Verdana;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+        .labelmsgsty {
+            color: Red;
+            font-family: Verdana;
+            font-weight: bold;
+        }
+
+        .red {
+            color: #FF3300;
+            background-color: #99D9EA;
+        }
+
+        .PNOT {
+            background-image: url('../images/icon_err.gif' );
+            background-repeat: no-repeat;
+            background-position: 2px 2px;
+            margin: 0px 4px 0px 4px;
+            padding: 2px 2px 2px 15px;
+            white-space: nowrap;
+        }
+
+        .POK {
+            color: #006600;
+            background-image: url('../images/ok.gif' );
+            background-repeat: no-repeat;
+            background-position: 2px 2px;
+            margin: 0px 4px 0px 4px;
+            padding: 2px 2px 2px 15px;
+        }
+
+        .LabelAdvisory {
+            background-color: #0000B3;
+            font-family: Verdana;
+            margin-left: auto;
+            margin-right: auto;
+            color: White;
+            height: 15px;
+        }
+
+        .lblheader {
+            color: Blue;
+        }
+
+        .ModalPopupPanel {
+            background-color: #eeeeee;
+            border: 8px solid #086EAA;
+            padding-left: 20px;
+            padding-right: 10px;
+            width: 700px;
+            height: 550px;
+            overflow: auto;
+            position: relative;
+            font-family: Verdana;
+            font-size: 1.3em;
+        }
+
+        .ModalPopupBackground {
+            background: black;
+            filter: progid:DXImageTransform.Microsoft.Alpha(opacity=50);
+            opacity: .5;
+            -moz-opacity: .5;
+        }
+
+        .ModalNewPopupPanel {
+            background-color: #FFFFCC;
+            border: 8px solid #086EAA;
+            width: 500px;
+            height: 250px;
+            position: inherit;
+            font-family: Verdana;
+            font-size: 1em;
+        }
+
+        .extender {
+            background-color: #317082;
+        }
+
+        .Grid-text {
+            font-family: tahoma;
+            Font-Size: 12px;
+            Width: 100%;
+        }
+
+            .Grid-text caption {
+                color: #003366;
+                font-weight: bold;
+                font-size: 1.2em;
+            }
+
+        .style2 {
+            height: 18px;
+        }
+    </style>
+    <script src="scripts/captcha.js" type="text/javascript">
+    </script>
+    <script language="javascript" type="text/javascript">
+        function PopupCenter(pageURL, title, w, h) {
+            var left = (screen.width / 2) - (w / 2);
+            var top = (screen.height / 2) - (h / 2);
+            var targetWin = window.open(pageURL, title, 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no,resizable=yes,copyhistory=no, width=' + w + ', height=' + h + ', top=' + top + ', left=' + left);
+        }
+    </script>
+
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MMHENDHESB"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-MMHENDHESB');
+</script>
+
+<link href="/WebResource.axd?d=4D81ZzoSpDwWWWwhPKCcDAE_5a_rZC3Ed2LvcFZTkmcWDckiIoGqBYDTHNEfAokNYc0gw-9i-v4g8AQtxBC-d8iq2SbanlkaIga-1em61vMPFTbgQQ6gXonoa00ekdaZVbLjk9ibJjyuDj7AAyTfMfT6TZ6oXf9hcjRMrP96R_RPqJoLRGl82z8gS2jsRC7j0&amp;t=634665596548906250" type="text/css" rel="stylesheet" /></head>
+<body>
+    <form name="form1" method="post" action="./Queries.aspx?cid=1%5c" onsubmit="javascript:return WebForm_OnSubmit();" id="form1" autocomplete="off">
+<div>
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" />
+<input type="hidden" name="__LASTFOCUS" id="__LASTFOCUS" value="" />
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="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" />
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['form1'];
+if (!theForm) {
+    theForm = document.form1;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<script src="/WebResource.axd?d=GycNz5wG6ypogj4liqE6K8z2SV1FSmHOF1eNcxv-Fjh2hSIyoMBFfx4xtHq2ChDD6zy6jxRt7nBhYtSf9vWBwk1qL4gMqahoh9Hrj998isc1&amp;t=638259602865233147" type="text/javascript"></script>
+
+
+<script src="/ScriptResource.axd?d=_ME0OUcf1DuZLDPe-i0RP-uN3cgJPrEL6PDJTh8WiGknQul0SGhcutU-4leErX8TbH8YfCqLTEMAhwmtc6B37XF3BzQegKoZ4rlnT1mkHVEUEjts4lf6OEGm4aPgizrPc-IYuRFFtXypK7CA72jJb-dAq8jSxnVKPtwGVb3LNXk1&amp;t=ffffffffc63aff9b" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=0366CnIdI0xm1C8HvgU2RZah3BfWu1E_0pgZ2r9wS8UjZJVErk_LI_A-drM7dbL-J_MoWBZIYvTBCUefAIz1crHoiF3YkKRSB-f2rjczd4GzRNyfzf9RT6ya-Kye24pzJuRLHuAFJsuZ_AyKha0JJDAekT81SCakE4S6aAlrWY2pdKLYmZmCDAVsqrv6xkIw0&amp;t=ffffffffb1d0f179" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+if (typeof(Sys) === 'undefined') throw new Error('ASP.NET Ajax client-side framework failed to load.');
+//]]>
+</script>
+
+<script src="/ScriptResource.axd?d=qEEMiO764G07QlZq41kc2F-iv9ltAWDEeBdE5ujEKh7qu_MFNZlnlMIqgIiU8cGOr1Y3qx8fym6wY938ijvNF17DjzKcPBoiu67M7br0s4HpAfsXp7vYHjOEleDI5YfrBOeRAPar-iof6BzKpjkjV9Ajs5Qbha8obikJXRQ8Ic4mJYF5qDn8t5stKV2ZumUi0&amp;t=ffffffffb1d0f179" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=zMPU3JL8Gf70NQg-GUEIAUYzpka8FIBLWr6eodTP0rFJmjMorPZEQob24CGOfXtPfbsteCKAhOnGYDV7k-8lOWS6ZSE6bn2JnDZ196n4ma5_j4WXvxj9UwNpwi_SZuDVimv22oSoAz8hRoYqjkEeDNmKUrQaQ3tB0doQo1rj_2g1&amp;t=5f915bbd" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=h-l0BRNHZmoFudBwsxeIQeQ1VqdqGGJZmG62-X7KrUm9GK0rXP717qAAKm5pH6UJo6zX-602evK73gy5EOjbi5oWlz01tdAcT_W7pp4A51gSvzZ_6ZZ_bgu84pepKIGGpBtDeL_23q8-MnlprShNXV66Zd6lsVUfWN4mhFfMjYY1&amp;t=5f915bbd" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=3o6mdWobYjUuXLwILzdmQRWyhECEw0EPtyIp5GNVRkwa5f8q2kIh6gwexV1FbbmbRNxwVsBfmt7vpR2lY8empYOthKPGrXxmnabKzh_bMg4nHVQThC3ouaoy4uOqT0Fktlhudqdh5qTzVeh65SuAjgFdkNwt9H-3CFrq7SB3UaQ1&amp;t=5f915bbd" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=FsKs8y1xwsGWEB6UodiL7myjUJy2wpsEsys_wMko-mltem773R_IyqUVC68zpGfGQsvTMGr1miZPpWmcmhC16P02x7SZO1Aznc-jGSQnmB0yiVncPka7hwl75vtRd2CKmUGkC290-y07RFw2qfgI4e8MleVodxCtXegci5FX-_81&amp;t=5f915bbd" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=0qm-ugGLkHcHowAcu02I8Gi2z-Zgqnhg5zGqhnvJk2KFMyPjUs-v_tZ27DBV8ywg5yt-_e3pPkNrKBaecTAjXDUWzkGFMlo8QMRbQwVSyOyfcjla_XzCEvo54G_kWn51NG2CmFUzN6L3fHMGq4yH8YeNRIM7FwG3YM2PeqPkAWE1&amp;t=5f915bbd" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=mEy3hMcK99omPLGGFLUk-yA7wiCr8kIIpN4EXWpa-s6vKA8UYhYuzTCGhm-CMbNahSW2ESf_mNfnYIsgk5HKn6SqVZLeIuPmnsd4gxi7yixgE0Mcdhl7JSBgp6MCiwhRhRyMQxtFIC5n0Ra5YmJqgc3u6z_9orYa6eMgYNs2R4Y1&amp;t=5f915bbd" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=oLQsOG0suUL8pRY2CuB7zR2XDxrLoK_unh2nDVrhcDsJJSTGGYpgtXjfUsGsx100Sk7o2oVpacSdh74Px8_PRHjUDpB01NZGyV_q-Y_sRLhwwmeatNLnH4EWjWOev8vV3BZUxzn9u7S-zXJfyrkiyW7xpU47a4TAQwDdqIUwaVGP0U2bWCEMTJn1QuDWKaI-0&amp;t=5f915bbd" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=MRpG5CH3w-O9RwMqqiOQl137kMrN8I-GOTTt5e5qqeAUfT83BuxXGc6w0Chv2PDpV2sZ68IjffE3t-9HyEPfxxbkWL2Kn-ap933mLLQyRJSvPj0DOeiuWp3af5QNDtwTyH7K_KccjKS-rapH3XGLGF5B__7nGbgwpG15X7P9LMUdfk2rPerrghXRwsTMzlKG0&amp;t=5f915bbd" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=JsFWKtxh5yRsKnxO1AVr-TrX2j8l3v1AVWiHO0MEAl86CEVOQG5CVlWfm9VV143mLSuMXthai7f-zz5GaOe2fZnzXcZrigFs1ECXG6DyZ-9ZaXRUGglPDNReuNzZbWuHW8huMc1AiHz9Q-XhqwoIkT8JF7T4V161jCKORcaJ7pM1&amp;t=5f915bbd" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=cx8z6W7HOCM1RbY4BhJmGDpI5ma-VewYwlVc03PT1dCYdVc7v7ZNLeA91XwxikjhQBnCWk7NOQo7XlWN2kWLUmizz5PRy-vT6anMVCt0xRYOlcjCGYGxZGDkd8Pgr3J3BqJUMpaXB5uCk4T2swOvQOlUKSkVk_CUGWLfVM5erUojCihseeFdwbotref5MyLw0&amp;t=5f915bbd" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=n2uZB4b-dOcoohTvW-coz_5nLKwYPapIIDxqmmF6YQIw_0PFy0IXKZxxc6CexSmkESgT5AULoGMT0IHE5vOevJJyMOzbuJABV-Mi7fQ3x-7CYgUOXeED6knT_fs8nE2UpccRKBSK3kuJ3IitFjoo6NWuGPf9Lrkci4JMK87IMf_pz1U9Pd13IMFuTIjJGwyt0&amp;t=5f915bbd" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=14s61jDmu6A7K_Y5rUdtp4QdrxZkcOjKUVND5JN_o16hFnZ02Ir3opoa4l__oiTuDmaM2LZviKXm9woWp0yoSrrBwCwHH5SJqD2rrc1FboEXZVsN_CLCfcAvP9Kqutgn7AUATojCrf4a1cEiL4Y_uTjEJ4O1cef-SMmsEqe0fzK9Ctgee5y1Ge2qJOrDteGy0&amp;t=5f915bbd" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=trqlCyps_y5ccoG9uECSVBZ4Jiu_JYnmWGtAXgMTO925ytMbFJYfObMJ3XB2CWUpsL461CRlct5q_vt9i3mgiNZF1VGojJ3IwaDjyR4OoPJ1Py84zTdp9u1NhIKMHN-Sm7-tIvka5ma9aclwkMw5XKcdJ4ubPH8klGIqAdphXE63D-Un62zseF6ETRq5Iewp0&amp;t=5f915bbd" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+function WebForm_OnSubmit() {
+if (typeof(ValidatorOnSubmit) == "function" && ValidatorOnSubmit() == false) return false;
+return true;
+}
+//]]>
+</script>
+
+<div>
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="323DE387" />
+	<input type="hidden" name="__VIEWSTATEENCRYPTED" id="__VIEWSTATEENCRYPTED" value="" />
+	<input type="hidden" name="__PREVIOUSPAGE" id="__PREVIOUSPAGE" value="pB9HOOFfag4SSq-EB2ONFZ2vWJVOXZqO1sp9aRq-Umw_j54W1jd3tZjOl8GR3ZMy3wT3SB4OXB5GrogjUEDlvBZvfdxaoM82jwcclhyXfBk1" />
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="3krplU6mdld4H6jP6KMdWyLNoc/dZ5gjlAjM1wBngsCZ5KVUfpjTQGPBKsmfjxeCuiFBbmpI5YsdWDM5OdrGGGyni7ldmp39c+3ySkk/CiSJ2C4lRv88Yw3gsbXCQLD1AM8lfp/kNy2kKyOVQWJA8YA6th2gzOKOddV+mb0hROg4rZsiokmI4oIIm1+NF9qp7fmI5am8YEXdlfnNfApNXGsLxRaSbUSg55XPLv9BaS1wgxcxT0T6G8fnTf690SfONEQM1unsdkyCEw2acC8/CyzJzLZdKqkA3Ow5i5IY0Pzm5ZD+worDZsllm8E+YpFp3e2fm+1JnnIvrgp4bCiJ95GjkEIVpHMQF8GzVeGTTQFMnhsoe9EmerX2Lqs0eITQs8tCRB4PQ6urtIUwUsLT72oYp0W+kbcG54czPT4Mks49mu7oLONh9kMCcnpcvg8Fjfxc25Q/TCFgCsKtbY5N7YIUzaiVAzgYLZYDmvw7KmfHXCHCHLWiSAq44cWstbqDlpFr1cGzQ5sg6ANXcMUpTAdtJWRLXffuY5auGDWnUo2S9XLIZO+6i/AG4sHwztsdYEOpNZRXGXAJ7FkJvmejXV56Z10HJ1eoYnx3MERJ8DgBGod71OfVamPGAPocuL0cyf+VfpMCW/DzLje+0sx2AVDMGuYHKTOt01o+PH+R3nIRXBhzUVuCerMvl/fZqSvMNUy1CTPw13SQjyPh/NlR9ZnX+zcoWkx2zupcfTeQ9zpfsx0g/Q6zqi9N599HM7/oneHwhW993X0WqIDqd4odOJqkjbmeCad9Bu+FbR770lnn+gT2UkaPcwigb7imwqYlAG7VfzdLtP8Pg6PrKdyIyMXZssGsRxs7f0TA5AxRCnM+qPH+XKXfiMoeWP0zSd0kYfLIhpuaTr8IWfsqZO7TWY6BvBlYfsuuPAfyn/Md9BV0Fz6zY14zr6qZOzSYHYyF2peqdFcjpCSyAc4C3pRJdXhW242KmSOiPrSI79ZM1Uro3V4jeTst5P9xxHEFBH2sz/VKz5HIGvkSL2lUA394hyBqFYo6PczW0gA3UHyeSEJdKwZ3EGVqZ+yt52Up+NEz1YOa0OjNkXTzyKizt1BblQG0dEcywHE6Vwj846ZnKWUcxJ9XBXOnqv3RHhxeTZa9i/8MysuxAFf+4iT5T9YufUrz7gipC+Ot+cg5jCNxcEcrCJbs/LEGMt26yQsSOu/vgFHUupVECxl3dpMgQvMGpv8c4rxFznr08gT7J9YoVoGOP9fOb/ELJxg5pyD37P+MEyHLvwWXzKWKet1rXOrWjWQM4JD3TxMp2ylAylulSENIqVAkYyN9sOTRcV4VMUBHiNp+GmZCAZ28G4YFEA0LdkJkDSsaCUcWIJhWVZdwdY6aujOhQ5GqWKjPubgIs/VWdHq0o5XnKMRsGtmSyxW+ho990HFWAChkmD8HjJtFiRe2tycRekeR3Ma5yVr5XcpWQdm/94LemCwjuKb/dDAQ7+0BSu7UolcAFGuBBHZ1qaT6OZG6O7WTDJODjkvHEbLFjJcsRos1qWuK6jNT1pCOkSAQs2O+cyFc9YFEa6v2Uk8lIA26UOURKSijtBhjsdoFQCcdtx23RV7Z8O0vrkpKg9MnJpGXEPH9PGV1Uj0IMwlMDxT9Enjqfw7vnGBteG9saG/QQrl3ZDbHiMtcUCxQttMRF4zJp6wQf3aYqsY7hwd/JouwX96SVq+uwDPTK6DxXUabhqzJUKwnmvfh93BAMA==" />
+</div>
+        <script type="text/javascript">
+//<![CDATA[
+Sys.WebForms.PageRequestManager._initialize('ScriptManager1', 'form1', [], [], [], 90, '');
+//]]>
+</script>
+
+        <div id="container">
+            <div id="wrapper">
+                <div class="header">
+                    <div class="subhead">
+                        <h1>
+                            <span id="lblhead"> Telecom Consumer Complaints Monitoring System</span>
+                            <br /><span id="lblhead2">(TCCMS)</span></h1>
+                    </div>
+                </div>
+                <div class="main_content">
+                    <table width="100%">
+                        <tr>
+                            <td align="center" width="80%" class="LabelTitle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+               
+                                
+                                
+                                
+                            </td>
+                            <td align="center" width="10%" class="LabelTitle">
+                                <a id="LinkButton1" href="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;LinkButton1&quot;, &quot;&quot;, false, &quot;&quot;, &quot;Default.aspx&quot;, false, true))" style="font-size:Small;">Home</a></td>
+                        </tr>
+                    </table>
+                    <table width="100%" align="left" class="formbackground" cellspacing="4" cellpadding="3">
+                        <tr>
+                            <td style="width: 100%; text-align: left">
+                                <span style="color: #FF3300">*</span>
+                                <span id="lblm">Mandatory Fields</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 100%; height: 15px"></td>
+                        </tr>
+                        <tr>
+                            <td style="width: 100%" align="center">
+                                <div id="MSG" class=""></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div id="panelmain">
+	
+                                    <table cellpadding="0" border="0" width="100%">
+                                        <tr>
+                                            <td>
+                                                <table cellpadding="0" border="0" width="100%">
+                                                    <tr>
+                                                        <td align="left"><span style="color: #FF3300">*</span>
+                                                            <span id="lblsp">Service Provider</span>
+                                                        </td>
+                                                        <td align="left">
+                                                            <select name="DdlServiceProvider" onchange="javascript:setTimeout(&#39;__doPostBack(\&#39;DdlServiceProvider\&#39;,\&#39;\&#39;)&#39;, 0)" id="DdlServiceProvider" class="ddlStyle" ToolTipText="Select service Provider">
+		<option selected="selected" value="-1">---Select---</option>
+		<option value="A1">Bharti Airtel Ltd. (Airtel)</option>
+		<option value="B1">Bharat Sanchar Nigam Limited (BSNL)</option>
+		<option value="H1">Quadrant Televentures Ltd  (HFCL)</option>
+		<option value="I1">Vodafone Idea Limited (Idea)</option>
+		<option value="M1">Mahanagar Telephone Nigam Ltd. (MTNL)</option>
+		<option value="T1">Tata Teleservices Ltd. (TTSL)</option>
+		<option value="V1">Vodafone Idea Limited (Vodafone)</option>
+		<option value="J1">Reliance Jio Infocomm Ltd</option>
+		<option value="H9">M/s Hathway Cable &amp; Datacom Pvt. Ltd</option>
+		<option value="A9">M/s Atria Convergence Technologies Pvt. Ltd. (ACT)</option>
+		<option value="C9">M/s Connect Broadband (Quadrant Televentures Ltd)</option>
+		<option value="B9">M/s You Broadband India Pvt. Ltd.</option>
+		<option value="T9">M/s Tikona Digital Networks Pvt. Ltd.</option>
+		<option value="G9">M/s Gujarat Telelink Pvt. Ltd. (GTPL)</option>
+		<option value="M9">M/s Airlink Broadband</option>
+		<option value="E9">M/s Excitel Broadband Pvt. Ltd</option>
+		<option value="Z1">M/s Tata Play Broadband Pvt. Ltd.</option>
+		<option value="D9">M/s DEN Broadband Pvt Ltd</option>
+		<option value="O9">M/s Chandra Net Pvt. Ltd. (SPIDIGO)</option>
+		<option value="L9">M/s Asianet Satellite Communications Ltd</option>
+		<option value="N9">M/s Nextra Teleservices Pvt. Ltd.,</option>
+
+	</select>
+                                                            <span id="RFV_ddlserviceprovider" style="color:Red;font-size:0.8em;display:none;"></span>
+                                                            <input type="hidden" name="RFV_ddlserviceprovider_ValidatorCalloutExtender_ClientState" id="RFV_ddlserviceprovider_ValidatorCalloutExtender_ClientState" />
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="2"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td align="left">
+                                                            <span style="color: #FF3300">*</span>
+                                                            <span id="lblstate">State</span>
+                                                        </td>
+                                                        <td align="left">
+                                                            <select name="DdlState" onchange="javascript:setTimeout(&#39;__doPostBack(\&#39;DdlState\&#39;,\&#39;\&#39;)&#39;, 0)" id="DdlState" class="ddlStyle" TooltipText="Select State">
+		<option selected="selected" value="XX">---Select State---</option>
+		<option value="AN">Andaman And Nicobar</option>
+		<option value="AP">Andhra Pradesh</option>
+		<option value="AR">Arunachal Pradesh</option>
+		<option value="AS">Assam</option>
+		<option value="BH">Bihar</option>
+		<option value="CH">Chandigarh</option>
+		<option value="CG">Chhattisgarh</option>
+		<option value="DN">Dadra and Nagar Haveli</option>
+		<option value="DD">Daman and Diu</option>
+		<option value="DH">Delhi</option>
+		<option value="GD">Goa</option>
+		<option value="GJ">Gujarat</option>
+		<option value="HY">Haryana</option>
+		<option value="HP">Himachal Pradesh</option>
+		<option value="JK">Jammu And Kashmir</option>
+		<option value="JH">Jharkhand</option>
+		<option value="KN">Karnataka</option>
+		<option value="KL">Kerala</option>
+		<option value="LD">Lakshadweep</option>
+		<option value="MP">Madhya Pradesh</option>
+		<option value="MH">Maharashtra</option>
+		<option value="MN">Manipur</option>
+		<option value="MG">Meghalaya</option>
+		<option value="MZ">Mizoram</option>
+		<option value="NL">Nagaland</option>
+		<option value="OR">Orissa</option>
+		<option value="PC">Puducherry</option>
+		<option value="PB">Punjab</option>
+		<option value="RJ">Rajasthan</option>
+		<option value="SK">Sikkim</option>
+		<option value="TN">Tamilnadu</option>
+		<option value="TG">Telangana</option>
+		<option value="TR">Tripura</option>
+		<option value="UP">Uttar Pradesh</option>
+		<option value="UC">Uttarakhand</option>
+		<option value="WB">West Bengal</option>
+
+	</select>
+                                                            <span id="RFV_ddlstate" style="color:Red;font-size:0.8em;display:none;"></span>
+                                                            <input type="hidden" name="RFV_ddlstate_ValidatorCalloutExtender_ClientState" id="RFV_ddlstate_ValidatorCalloutExtender_ClientState" />
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="2"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td align="left">
+                                                            <span style="color: #FF3300">*</span>
+                                                            <span id="lbldistrict">District</span>
+                                                        </td>
+                                                        <td align="left">
+                                                            <select name="DdlDistrict" onchange="javascript:setTimeout(&#39;__doPostBack(\&#39;DdlDistrict\&#39;,\&#39;\&#39;)&#39;, 0)" id="DdlDistrict" class="ddlStyle" ToolTipText="Select District">
+		<option selected="selected" value="-1">---Select District---</option>
+
+	</select>
+                                                            <span id="RFV_ddldistrict" style="color:Red;font-size:0.8em;display:none;"></span>
+                                                            <input type="hidden" name="RFV_ddldistrict_ValidatorCalloutExtender_ClientState" id="RFV_ddldistrict_ValidatorCalloutExtender_ClientState" />
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="2" class="style2"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="2"></td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td width="100%" align="center">
+                                                
+                                                <input type="submit" name="Button2" value="" id="Button2" style="width:0px;display: none;" />
+                                                <input type="submit" name="Button3" value="" id="Button3" style="width:0px;display: none;" />
+                                                <div id="div1" class="popupStyle" visible="false" style="display: none; width: 40%">
+                                                    <table width="100%" style="text-align: center">
+                                                        <tr>
+                                                            <td align="center">
+                                                                <span id="Label1" style="font-weight:bold;text-decoration:underline;">Call Centre Details</span>
+                                                            </td>
+                                                            <td align="right">
+                                                                <input type="submit" name="Button4" value="X" id="Button4" class="ButtonStyle" />
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td align="left" colspan="2"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td align="center" colspan="2">
+                                                                <span id="Label2" style="font-weight:bold;"></span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td align="left" colspan="2"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td align="left" colspan="2"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td colspan="2">&nbsp;
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                                
+                                                <input type="submit" name="butnnotinuse" value="" id="butnnotinuse" style="width:0px;display: none;" />
+                                                <input type="submit" name="btncallLink" value="" id="btncallLink" style="width:0px;display: none;" />
+                                                <div id="divLink" class="popupStyle" visible="false" style="display: none; width: 40%">
+                                                    <table width="100%" style="text-align: center">
+                                                        <tr>
+                                                            <td align="center">
+                                                                <span id="lblApptitle" style="font-weight:bold;text-decoration:underline;">Appellate Authority Details</span>
+                                                            </td>
+                                                            <td align="right">
+                                                                <input type="submit" name="btncancel" value="X" id="btncancel" class="ButtonStyle" />
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td align="left" colspan="2"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td align="center" colspan="2">
+                                                                <span id="lblLinkMsg" style="font-weight:bold;"></span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td align="left" colspan="2"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td align="left" colspan="2"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td colspan="2">&nbsp;
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="center"></td>
+                                        </tr>
+                                        <tr>
+                                            <td align="left">&nbsp;</td>
+                                        </tr>
+                                    </table>
+                                    
+                                    <input type="submit" name="btnnotinuse" value="" id="btnnotinuse" style="width:0px;display: none;" />
+                                    <input type="submit" name="btncallcentredetails" value="" id="btncallcentredetails" style="width:0px;display: none;" />
+                                    <div id="divCallCentre" class="popupStyle" visible="false" style="display: inline; width: 40%">
+                                        <table width="100%" style="text-align: center">
+                                            <tr>
+                                                <td align="center">
+                                                    <span id="LblTitle" style="font-weight:bold;text-decoration:underline;">Complaint Centre Details</span>
+                                                </td>
+                                                <td align="right">
+                                                    <input type="submit" name="btncancelcall" value="X" id="btncancelcall" class="ButtonStyle" />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td align="left" colspan="2"></td>
+                                            </tr>
+                                            <tr>
+                                                <td align="center" colspan="2">
+                                                    <span id="Lblcallnum" style="font-weight:bold;"></span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td align="left" colspan="2"></td>
+                                            </tr>
+                                            <tr>
+                                                <td align="left" colspan="2"></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2">&nbsp; </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                
+</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="height: 20px"></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div id="panvis" style="height:260px;">
+	
+                                    <center>
+                                        <p>
+                                            <strong>
+                                                <span id="Disc">Disclaimer</span>
+
+                                            </strong>:
+                                            <br />
+                                            <span id="DiscContent">Though all efforts have been made to ensure the accuracy of the contents on this Portal, the same should not be construed as accurate reproduction of the text for use for any legal purposes. Links to other websites that have been included on this Portal are provided for public convenience only. However, TRAI&nbsp; is not responsible for the contents or reliability of linked websites and does not necessarily endorse the views expressed therein.</span>
+                                        </p>
+                                    </center>
+                                
+</div>
+                            </td>
+                        </tr>
+                    </table>
+                    <div class="clear"></div>
+                </div>
+                <div class="footer">
+                    Website Designed, Developed and Hosted by <a href="http://www.nic.in/" target="_blank">National Informatics Centre</a><br />
+                    Contents provided by <a href="http://trai.gov.in/" target="_blank">Telecom Regulatory Authority of India.</a><br />
+                    Best Viewed in 1024 X 768 and above resolutions.
+                </div>
+            </div>
+        </div>
+    
+<script type="text/javascript">
+//<![CDATA[
+var Page_Validators =  new Array(document.getElementById("RFV_ddlserviceprovider"), document.getElementById("RFV_ddlstate"), document.getElementById("RFV_ddldistrict"));
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+var RFV_ddlserviceprovider = document.all ? document.all["RFV_ddlserviceprovider"] : document.getElementById("RFV_ddlserviceprovider");
+RFV_ddlserviceprovider.controltovalidate = "DdlServiceProvider";
+RFV_ddlserviceprovider.focusOnError = "t";
+RFV_ddlserviceprovider.errormessage = "* Select Service Provider";
+RFV_ddlserviceprovider.display = "None";
+RFV_ddlserviceprovider.validationGroup = "Submit";
+RFV_ddlserviceprovider.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+RFV_ddlserviceprovider.initialvalue = "-1";
+var RFV_ddlstate = document.all ? document.all["RFV_ddlstate"] : document.getElementById("RFV_ddlstate");
+RFV_ddlstate.controltovalidate = "DdlState";
+RFV_ddlstate.focusOnError = "t";
+RFV_ddlstate.errormessage = "* Select State";
+RFV_ddlstate.display = "None";
+RFV_ddlstate.validationGroup = "Submit";
+RFV_ddlstate.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+RFV_ddlstate.initialvalue = "XX";
+var RFV_ddldistrict = document.all ? document.all["RFV_ddldistrict"] : document.getElementById("RFV_ddldistrict");
+RFV_ddldistrict.controltovalidate = "DdlDistrict";
+RFV_ddldistrict.focusOnError = "t";
+RFV_ddldistrict.errormessage = "* Select District";
+RFV_ddldistrict.display = "None";
+RFV_ddldistrict.validationGroup = "Submit";
+RFV_ddldistrict.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+RFV_ddldistrict.initialvalue = "-1";
+//]]>
+</script>
+
+
+<script type="text/javascript">
+//<![CDATA[
+
+var Page_ValidationActive = false;
+if (typeof(ValidatorOnLoad) == "function") {
+    ValidatorOnLoad();
+}
+
+function ValidatorOnSubmit() {
+    if (Page_ValidationActive) {
+        return ValidatorCommonOnSubmit();
+    }
+    else {
+        return true;
+    }
+}
+        
+document.getElementById('RFV_ddlserviceprovider').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('RFV_ddlserviceprovider'));
+}
+Sys.Application.add_init(function() {
+    $create(AjaxControlToolkit.ValidatorCalloutBehavior, {"ClientStateFieldID":"RFV_ddlserviceprovider_ValidatorCalloutExtender_ClientState","closeImageUrl":"/WebResource.axd?d=g-xNj68BHg4eDtdMThuAVSei3-c2qfjrm07g9JA1TFll2ONyWDJK8IKHrLNtLf8pGRBpcTdIyhzpSGbdw_FiWgR7u_GwJy2mcmc-xNI5Sr5p2ac3uO8kM8C1DfpjzhR7el93T172npOOf2SyZx8blYHJ9LhGaZVlHkxjSDJ08TA1\u0026t=634665596548906250","highlightCssClass":"validatorCalloutHighlight","id":"RFV_ddlserviceprovider_ValidatorCalloutExtender","warningIconImageUrl":"/WebResource.axd?d=X_7Pfn2Cdg6hn2jwQAprreQedMRtBj-FdISgn_HajfK_8SDZyRaVwIIM5sOXxSu8-yzvZEuF7A95cTCJ8vUHptQecj-erHOIyBIwGz-y5IkwGAAhYNdxxp51TisDc09nppcANaM-_4ldA658kc3C_QrgpA56R2W55cWAd611LtI1\u0026t=634665596548906250"}, null, null, $get("RFV_ddlserviceprovider"));
+});
+
+document.getElementById('RFV_ddlstate').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('RFV_ddlstate'));
+}
+Sys.Application.add_init(function() {
+    $create(AjaxControlToolkit.ValidatorCalloutBehavior, {"ClientStateFieldID":"RFV_ddlstate_ValidatorCalloutExtender_ClientState","closeImageUrl":"/WebResource.axd?d=g-xNj68BHg4eDtdMThuAVSei3-c2qfjrm07g9JA1TFll2ONyWDJK8IKHrLNtLf8pGRBpcTdIyhzpSGbdw_FiWgR7u_GwJy2mcmc-xNI5Sr5p2ac3uO8kM8C1DfpjzhR7el93T172npOOf2SyZx8blYHJ9LhGaZVlHkxjSDJ08TA1\u0026t=634665596548906250","highlightCssClass":"validatorCalloutHighlight","id":"RFV_ddlstate_ValidatorCalloutExtender","warningIconImageUrl":"/WebResource.axd?d=X_7Pfn2Cdg6hn2jwQAprreQedMRtBj-FdISgn_HajfK_8SDZyRaVwIIM5sOXxSu8-yzvZEuF7A95cTCJ8vUHptQecj-erHOIyBIwGz-y5IkwGAAhYNdxxp51TisDc09nppcANaM-_4ldA658kc3C_QrgpA56R2W55cWAd611LtI1\u0026t=634665596548906250"}, null, null, $get("RFV_ddlstate"));
+});
+
+document.getElementById('RFV_ddldistrict').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('RFV_ddldistrict'));
+}
+Sys.Application.add_init(function() {
+    $create(AjaxControlToolkit.ValidatorCalloutBehavior, {"ClientStateFieldID":"RFV_ddldistrict_ValidatorCalloutExtender_ClientState","closeImageUrl":"/WebResource.axd?d=g-xNj68BHg4eDtdMThuAVSei3-c2qfjrm07g9JA1TFll2ONyWDJK8IKHrLNtLf8pGRBpcTdIyhzpSGbdw_FiWgR7u_GwJy2mcmc-xNI5Sr5p2ac3uO8kM8C1DfpjzhR7el93T172npOOf2SyZx8blYHJ9LhGaZVlHkxjSDJ08TA1\u0026t=634665596548906250","highlightCssClass":"validatorCalloutHighlight","id":"RFV_ddldistrict_ValidatorCalloutExtender","warningIconImageUrl":"/WebResource.axd?d=X_7Pfn2Cdg6hn2jwQAprreQedMRtBj-FdISgn_HajfK_8SDZyRaVwIIM5sOXxSu8-yzvZEuF7A95cTCJ8vUHptQecj-erHOIyBIwGz-y5IkwGAAhYNdxxp51TisDc09nppcANaM-_4ldA658kc3C_QrgpA56R2W55cWAd611LtI1\u0026t=634665596548906250"}, null, null, $get("RFV_ddldistrict"));
+});
+Sys.Application.add_init(function() {
+    $create(AjaxControlToolkit.ModalPopupBehavior, {"CancelControlID":"btncancelcall","PopupControlID":"divCallCentre","dynamicServicePath":"/Queries.aspx","id":"ModalPopupExtender1"}, null, null, $get("btncallcentredetails"));
+});
+Sys.Application.add_init(function() {
+    $create(AjaxControlToolkit.ModalPopupBehavior, {"CancelControlID":"btncancel","PopupControlID":"divLink","dynamicServicePath":"/Queries.aspx","id":"MPEApplink"}, null, null, $get("btncallLink"));
+});
+Sys.Application.add_init(function() {
+    $create(AjaxControlToolkit.ModalPopupBehavior, {"CancelControlID":"btncancelcall","PopupControlID":"divCallCentre","dynamicServicePath":"/Queries.aspx","id":"MPE_CallCentre"}, null, null, $get("btncallcentredetails"));
+});
+//]]>
+</script>
+</form>
+</body>
+</html>

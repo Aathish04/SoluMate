@@ -1,0 +1,1023 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head><script type="text/javascript" src="./wicket/resource/org.apache.wicket.resource.JQueryResourceReference/jquery/jquery-2.2.4-ver-F9EE266EF993962AD59E804AD9DEBE66.js"></script>
+<script type="text/javascript" src="./wicket/resource/org.apache.wicket.ajax.AbstractDefaultAjaxBehavior/res/js/wicket-ajax-jquery-ver-3A8C326A8436172FC95523D517EBC88B.js"></script>
+<script type="text/javascript" id="wicket-ajax-base-url">
+/*<![CDATA[*/
+Wicket.Ajax.baseUrl="FIRStatusCheck?0";
+/*]]>*/
+</script>
+
+<title>Welcome to CCTNS Citizen Portal</title>
+<link rel="icon" href="images/tn_police.ico" type="image/x-icon"/>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1,maximum-scale=1">
+<meta http-equiv="cache-control"
+	content="no-cache, must-revalidate,no-store" />
+<meta http-equiv="cache-control"
+	content="post-check=0, pre-check=0', FALSE" />
+<meta http-equiv="pragma" content="no-cache" />
+<meta http-equiv="expires" content="-1" />
+<meta name="description" content="TAMIL NADU POLICE - CITIZEN PORTAL">
+<meta name="author" content="NIC, BESANT NAGAR, CHENNAI">
+<meta name="keywords" content="POLICE">
+<meta name="keywords" content="TAMIL NADU POLICE">
+<meta name="keywords" content="TAMIL NADU CCTNS">
+<meta name="keywords" content="CCTNS">
+<meta name="keywords" content="TNCCTNS">
+<meta name="keywords" content="SCRB">
+<meta name="keywords" content="TNSCRB">
+<meta name="keywords" content="DCRB">
+<meta name="keywords" content="CYBERCRIME">
+<meta name="keywords" content="PVS Police Verification Service">
+<meta name="keywords" content="LDR Lost Documents">
+<meta name="keywords" content="RTA Road Accident Cases">
+<meta name="keywords" content="INDIA POLICE">
+<meta name="keywords" content="TAMIL NADU SCRB">
+<meta name="keywords" content="TAMIL NADU KAVAL">
+<meta name="keywords" content="TAMIL NADU DGP">
+<!-- ############## apple browser ##################### -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<!-- ######################## CSS ##########################-->
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<!-- Bootstrap -->
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="bootstrap/css/bootstrap-style.css" rel="stylesheet">
+<link rel="stylesheet" href="font/css/fontawesome-all.min.css">
+<link rel="stylesheet" href="font/css/font-awesome.min.css">
+<link rel="stylesheet" href="font/css/ionicons.min.css">
+<link rel="stylesheet" href="font/css/fontawesome5-overrides.min.css">
+<!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto"> -->
+<!-- frame busting code to avoid clickjacking by viji on 25/06/2015-->
+<style>
+/*<![CDATA[*/
+
+html {
+	display: none;
+}
+
+.theme-font {
+	padding: 2px;
+	border: 1px solid #FFF;
+	font-size: 11px !important;
+	"
+}
+
+.theme-font-span {
+	width: 10px;
+	font-size: 10px !important;
+}
+
+/*]]>*/
+</style>
+<!-- ############### Jquery / JavaScript #################-->
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+      <script src="bootstrap/js/html5shiv.min.js"></script>
+      <script src="bootstrap/js/respond.min.js"></script>           
+    <![endif]-->
+<!--  <script src="bootstrap/js/jquery.min.js"></script> -->
+<!-- <script src="bootstrap/js/jquery-1x.min.js"></script> -->
+<script src="bootstrap/js/jquery.min.js"></script>
+<!-- <script src="bootstrap/js/jquery.min.js"></script> -->
+<script src="bootstrap/js/bowser.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="bootstrap/js/jquery.easing.js"></script>
+<script src="bootstrap/js/jquery.mousewheel.js"></script>
+<script src="bootstrap/js/jquery.jcarousellite.js"></script>
+<script src="bootstrap/js/changecolor.js"></script>
+<!-- <script src="bootstrap/js/changecolor.min.js"></script> -->
+<script src="bootstrap/js/cctns-nic-style.js"></script>
+<!-- <script src="bootstrap/js/cctns-nic-style.min.js"></script> -->
+<script src="bootstrap/js/change_font_size.js"></script>
+<!-- <script src="bootstrap/js/change_font_size.min.js"></script> -->
+<script src="cctns-js/showhide.js"></script>
+<!-- ###########<---old file---- > #######################-->
+<script type="text/javascript" src="cctns-js/commonvalidations.js"></script>
+<script type="text/javascript" src="cctns-js/datetimepicker_css10yrs.js"></script>
+<script type="text/javascript">
+/*<![CDATA[*/
+ 
+function paygovAlertMessage() {
+		  
+		  var r = confirm("While availing paid services, if your payment has gone through successfully, your application will be processed in a couple of days. Kindly refrain from multiple attempts!");
+		  if (r == true) {
+		    console.info("OK!");
+		  } else {
+			  window.location.replace("https://eservices.tnpolice.gov.in/CCTNSNICSDC/Index");
+		  }
+		 
+		}
+
+/*]]>*/
+</script>
+<style type="text/css">
+/*<![CDATA[*/
+
+.col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3,
+	.col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9,
+	.col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3,
+	.col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9,
+	.col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3,
+	.col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9,
+	.col-xs-1, .col-xs-10, .col-xs-11, .col-xs-12, .col-xs-2, .col-xs-3,
+	.col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9 {
+	position: unset;
+}
+
+/*]]>*/
+</style>
+
+	<!-- /*
+ * Last modif -  Nithya on 01-03-2019 - adding new feature for mobile number based search  
+ */ -->
+	<link rel="stylesheet" href="bootstrap/css/cctns-nic-style.css" type="text/css"/>
+	<script id="org-nic-cctnsportal-home-FirStatusCheckHome-0">
+/*<![CDATA[*/
+
+
+	$(document).ready(function(){
+		
+	 
+		 $('html,input').bind('contextmenu',function(e){
+		      e.preventDefault();
+		      alert('Right Click is not allowed');
+		 }); 
+		 $("input").bind({
+				copy : function(){
+					alert('Copy is not allowed');
+					return false;
+				},
+				paste : function(){
+					alert('Paste is not allowed');
+					return false;
+				},
+				cut : function(){
+					alert('Cut is not allowed');
+					return false;
+				}
+			});
+		 $(".radiogroup").load("on",function(){
+			// alert("radiogroup");
+			 $(".radiogroup input label").append("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
+			 $(".radiogroup input label").append("boooo");
+		 });
+		// alert("gvgggg");
+		 
+	});
+	
+	function setcolor()
+	{
+		 
+ 		$(".calender input").wrap("<div class='col-xs-12 col-sm-6'></div>");
+  	    $(".calender span:first").wrap("<div class='col-xs-12 col-sm-6'></div>"); 	
+	       
+		var color=window.localStorage.getItem("color");
+		if(color!=null)
+		{		   
+			colorchange(color);   
+		}
+		else
+		{
+			colorchange('blue');
+		}
+		
+		
+	}
+	 
+	function preloadenable()
+	{
+		$('#pop-loading').show(); 
+	}
+	function preloaddisable()
+	{
+		$('#pop-loading').hide(); 
+	}
+	
+/*]]>*/
+</script>
+
+
+
+<script type="text/javascript" >
+/*<![CDATA[*/
+Wicket.Event.add(window, "domready", function(event) { 
+Wicket.Ajax.ajax({"u":"./FIRStatusCheck?0-3.0-form-webconpanel-submitotp","m":"POST","c":"id2","f":"id1","sc":"webconpanel:submitotp","e":"click","pd":true});;
+Wicket.Ajax.ajax({"u":"./FIRStatusCheck?0-3.0-form-mobnoChoice","m":"POST","c":"id3","sr":true,"pre":[function(attrs){return attrs.event.target.name === 'mobnoChoice'}],"e":"click"});;
+Wicket.Ajax.ajax({"u":"./FIRStatusCheck?0-3.0-form-District+Name","m":"POST","c":"id4","e":"change"});;
+Wicket.Ajax.ajax({"u":"./FIRStatusCheck?0-3.0-form-link","c":"link1","e":"click","pd":true});;
+Wicket.Event.publish(Wicket.Event.Topic.AJAX_HANDLERS_BOUND);
+;});
+/*]]>*/
+</script>
+</head>
+<body style="overflow: auto; margin-right: 0px;" class="wrappercolor">
+	<div id="pagesloading" style="display: none;">
+		<div id="loader" style="display: none;"></div>
+	</div>
+	
+	
+	
+	<div id="wrapper" class="wrapper wrappercolor" style="width: 100%">
+		<header>
+			<img src="images/bluebanner.jpg" class="img-responsive img-thumbnail tnlogo" onerror="this.onerror=null;changepath();setcolor();" alt="Tamil Nadu Police Logo" style="padding: 0; overflow: hidden; width: 100%; height: 70%;"/>
+			<nav role="navigation" id="topnav" class="navbar navbar-default"
+				style="box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12) !important;z-index: 999;">
+				<div class="navbar-header txtbgcolor">
+					<button type="button" data-target="#navbarCollapse"
+						data-toggle="collapse" class="navbar-toggle">
+						<span class="sr-only"></span> <span class="icon-bar"></span> <span
+							class="icon-bar"></span> <span class="icon-bar"></span>
+					</button>
+					<!-- <a href="./Index" class="navbar-brand" title="HOME"><span class="glyphicon glyphicon-home" style="color:#FFF;" aria-hidden="true"></span></a> -->
+					<a href="./Index" class="navbar-brand" title="HOME"><span
+						class="glyphicon glyphicon-home" style="color: #FFF;"
+						aria-hidden="true"></span></a>
+				</div>
+				<div class="menuHolder" style="padding: 0;">
+					<div id="navbarCollapse"
+						class="col-xs-12 col-sm-12 col-md-12 col-lg-12 collapse navbar-collapse menuHolder menu-btn-color-1top new-font-div"
+						style="width: 100%; padding: 0;">
+						<ul
+							class="nav navbar-nav navbar-nav list-inline bold col-xs-12 col-sm-8 col-md-8 col-lg-8"
+							style="padding: 0; float: left;">
+							<li><a href="./Index" class="dropdown-toggle sentencecase"><i
+									class="fa fa-home"></i> <!-- home --></a></li>
+							<li><a class="dropdown-toggle sentencecase"
+								data-toggle="dropdown" href="#">About Us<span class="caret"></span></a>
+								<ul role="menu" class="dropdown-menu bold menu-btn-color-2top">
+									<li><a href="./History">History</a></li>
+									<li><a href="./OrganisationChart">Organisation</a></li>
+									<li><a href="pdfs/Strength_TN.pdf" target="_blank">Executive
+											Strength</a></li>
+									<li><a href="./PhotoGalleryView">Gallery</a></li>
+									<!-- <li><a href="./citizenhalloffame">Good Work Done</a></li>  -->
+									<!--  //added by PavithraN NOV'15 -->
+									<li><a href="./medals">Medals</a></li>
+									<!-- <li><a href="./Memoriam">InMemoriam</a></li> -->
+									<li><a href="./Welfare">Welfare</a></li>
+									<li><a href="./PolicyNote">Policy Note</a></li>
+									<!-- <li><a href="https://ips.gov.in/ips_ipr.aspx" target="_blank">IPR</a></li> -->
+									<li><a href="./CitizenCharter">Citizen Charter</a></li>
+									<!-- <li class="dropdown" ><a data-toggle="dropdown" class="dropdown-toggle"  href="#">About CCTNS  <span class="glyphicon glyphicon-chevron-right"></span></a>	
+							
+						</li>
+						<li><a href="./RtiAct">RTI Act</a></li>	
+						<li><a href="./SecurityAgency">Private SecurityAgencies</a></li>			
+				        <li><a href="./Recruitment">Recruitment</a></li>
+				        <li><a href="./Links" >Important Sites</a></li> -->
+									<!--  <li><a href="./CitizenInfo">Information to Public</a></li>
+						<li><a href="./CitizenPublication" >Publications</a></li>
+						<li><a href="./ePAYMENT" >e-PAYMENT - Finger Print Bureau</a></li> -->
+									<!-- 			<li><a href="./CitizenDownloadForms" >Download Application Forms</a></li> -->
+									<li><a href="./citizenhalloffame" class="dropdown-toggle sentencecase">Good Work Done</a></li>
+									<li><a href="./NewsMore" class="dropdown-toggle sentencecase">News</a></li>
+								</ul></li>
+							<li><a class="dropdown-toggle sentencecase"
+								data-toggle="dropdown" href="#">About CCTNS<span
+									class="caret"></span></a>
+								<ul role="menu" class="dropdown-menu bold menu-btn-color-2top">
+									<li><a href="./CCTNS_intro">Introduction</a></li>
+									<li><a href="pdfs/aboutcctns/cctns_event.pdf" target="_blank">Chronicle of Events</a></li>
+									<!-- <li><a href="pdfs/aboutcctns/fortnight_20_08_2019_Full_corrected.pdf" target="_blank">Newsletter</a></li> -->
+									<!--  //added by PavithraN NOV'15 -->
+									<li><a href="./NewsLetterHome">Newsletter</a></li>
+									<!-- <li><a href="pdfs/aboutcctns/cctns_eDigist.pdf" target="_blank">eDigest</a></li>
+						<li><a href="./CCTNSStakeHolder">Stake Holders</a></li>
+						<li><a href="./CCTNSContact">Contact</a></li>		 -->
+								</ul></li>
+							<li><a class="dropdown-toggle sentencecase"
+								data-toggle="dropdown" href="#">Citizen Services <br>(
+									Free )<span class="caret"></span></a>
+								<ul role="menu" class="dropdown-menu menu-btn-color-2top  bold">
+									<li><a href="./ComplaintRegistrationPage">Register
+											Online Complaint</a></li>
+									<li><a href="./ComplaintStatusPage">Online Complaint
+											Status</a></li>
+									<li><a href="./CitizenFIRView">View FIR</a></li>
+									<li><a href="./CitizenArrestedPersonHome">Arrested
+											Person Details</a></li>
+									<li><a href="./FIRStatusCheck">FIR Status</a></li>
+									<li><a href="./CSRStatusCheck">CSR Status</a></li>
+									<li><a href="./CitizenVehicleHome">Vehicle
+											Verification</a></li>
+									<li><a href="./SecurityAgency">Private Security
+											Agencies</a></li>
+									<li><a href="./NGOFoundHome">Found by NGO</a></li>
+									<li><a href="./FAQ">CCTNS FAQ</a></li>
+									<li><a href="./Index"></a></li>
+								</ul></li>
+							<li><a class="dropdown-toggle sentencecase"
+								data-toggle="dropdown" href="#">Citizen Services <br>(
+									<!-- <i class="fas fa-rupee-sign"></i> -->Paid )<span
+									class="caret"></span></a>
+								<ul role="menu" class="dropdown-menu menu-btn-color-2top  bold">
+									<li class="dropdown"><a data-toggle="dropdown"
+										class="dropdown-toggle" href="#">Police Verification <span
+											class="glyphicon glyphicon-chevron-right"></span></a>
+										<ul role="menu"
+											class="dropdown-menu  menu-btn-color-3top navbar-right bold"
+											style="top: 30px; background-color: rgb(102, 179, 255);">
+											<li><a href="./NewRegister">New Request</a></li>
+											<li><a href="./PoliceVerificationServiceViewStatus">View
+													Status</a></li>
+											<li><a href="./PoliceVerificationServiceVerify">Verify</a></li>
+											<li><a href="./PoliceVerificationServiceFeedback">Feedback</a></li>
+											<li><a href="./FAQ">FAQ</a></li>
+										</ul></li>
+									<li><a href="./LostDocumentReport">Lost Document
+											Report</a></li>
+									<li><a href="./ePAYMENT" target="_blank">E-Pay Finger
+											Print Bureau</a></li>
+									<li><a href="./CitizenDRACDHome">Road Accident
+											Documents</a></li>
+									<li><a
+										href="https://echallan.parivahan.gov.in/index/accused-challan"
+										target="_blank">E-Payment for Traffic Challans</a></li>
+									<li><a href="./Index"></a></li>
+								</ul></li>
+							<li><a class="dropdown-toggle sentencecase"
+								data-toggle="dropdown" href="#"> Citizen Services <br>
+									<i class="fas fa-print-slash"></i>( Offline )<span
+									class="caret"></span></a>
+								<ul role="menu" class="dropdown-menu menu-btn-color-2top  bold">
+									<li><a href="./CitizenDownloadForms">Download
+											Application Forms</a></li>
+									<li><a href="./CitizenPublication">Publications</a></li>
+									<li><a href="./CitizenInfo">Information to Public</a></li>
+									<li><a href="./Index"></a></li>
+								</ul></li>
+							<li><a href="./Contact" class="dropdown-toggle">Helplines</a></li>
+							<!-- <li><a class="dropdown-toggle sentencecase" data-toggle="dropdown"  href="#" >Public Advisory<span class="caret"></span></a>
+					<ul role="menu" class="dropdown-menu menu-btn-color-2top  bold">						
+						<li><a href="./CitizenCharter">Citizen Charter</a></li>
+						<li class="dropdown" ><a data-toggle="dropdown" class="dropdown-toggle"  href="#">Prevention Tips  <span class="glyphicon glyphicon-chevron-right"></span></a>
+                              <ul role="menu" class="dropdown-menu bold  menu-btn-color-3top navbar-right">
+								  <li><a href="./CitizenLandGrabbing" target="_blank">Land Grabbing </a></li>
+								  <li><a href="./CitizenKandhuVatti" target="_blank">Kandhu Vatti</a></li>
+								  <li><a href="./CitizenForgery" target="_blank">Forgery</a></li>
+								  <li><a href="./CitizenJobRocketing" target="_blank">Job Racketeering</a></li>     
+								  <li><a href="./PreventionTips" target="_blank">Crime Prevention Tips</a></li>                               
+							  </ul>
+						</li>
+                        <li><a href="./Index"></a></li>
+					</ul>
+				</li> -->
+							<!-- <li><a href="./FAQ" class="dropdown-toggle uppercase" >FAQ</a></li>
+				<li><a href="./FeedbackCitizen" class="dropdown-toggle" >Feedback</a></li> -->
+							<li><a data-toggle="dropdown"
+								class="dropdown-toggle sentencecase" href="#">Mobile Apps <span
+									class="caret"></span></a>
+								<ul role="menu" class="dropdown-menu menu-btn-color-2top  bold">
+									<li><a href="./MobileApp">Citizen Mobile App</a></li>
+									<li><a href="./KaavalUthavi">Kaaval Uthavi App</a></li>	
+									<li><a href="./DIGICOPMobAppDownload">DIGICOP App</a></li>
+								</ul></li>
+							<li><a class="dropdown-toggle sentencecase"
+								data-toggle="dropdown" href="#">Martyrs<span class="caret"></span></a>
+								<ul role="menu" class="dropdown-menu bold menu-btn-color-2top">
+									
+									<li><a href="./Memoriam" class="dropdown-toggle">Martyr</a></li>
+									<li><a href="./NextEForm">e-Shradhanjali (அஞ்சலி)</a></li>
+									
+								</ul></li>
+								
+								<li><a href="./NRICell" class="dropdown-toggle">NRI Cell</a></li>
+								
+							<li><a class="dropdown-toggle sentencecase"
+								data-toggle="dropdown" href="#">Contact Us <span
+									class="caret"></span></a>
+								<ul class="dropdown-menu bold menu-btn-color-2top">
+									<li><a href="./ContactPoliceHeadquarters" class="contactinfo">Police Headquarters</a></li>
+									<li><a href="./DistMap">District / City Offices</a></li>
+									<li><a href="./PSHomePage">Police Stations</a></li>
+									<li><a href="./ContactSpecialUnit" class="contactinfo">Special
+											Units</a></li>
+									<li><a href="./ContactSearch">Contact Search</a></li>
+									<!-- <li><a href="./Contact" class="contactinfo">Emergency Helplines</a></li>   -->
+								</ul></li>
+							<!-- <li><a  href="https://www.facebook.com/tnpoliceofficial"  target="_blank" class="dropdown-toggle"><i class="fa fa-facebook bold" style="border: 2px solid #fff;border-radius: 15px; font-size: 20px;padding: 2px 12px" aria-hidden="true"></i></a></li> -->
+							<li><a href="https://www.facebook.com/tnpoliceofficial"
+								target="_blank" class="dropdown-toggle"
+								style="padding: 5px !important"><i
+									class="fa fa-facebook-official bold"
+									style="font-size: 25px; padding: 6px 5px" aria-hidden="true"></i></a></li>
+							<li><a href="https://twitter.com/tnpoliceoffl"
+								target="_blank" class="dropdown-toggle"
+								style="padding: 5px !important"><i class="fa fa-twitter"
+									style="font-size: 25px; padding: 6px 5px" aria-hidden="true"></i></a></li>
+						</ul>
+						<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 bold"
+							style="float: right; overflow: hidden; position: relative; white-space: nowrap; padding: 0 5px;">
+							<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6"
+								id="slidemenu search-margin col-xs-12"
+								style="padding: 5.5px 0 0; float: left;">
+								<form action="./tnpoliceSearch?q=document.getElementById(&#039;q&#039;).value" role="search" target="_blank" class="form-search form-inline">
+									<div class="form-group" style="display: flex;">
+										<input name="q" id="q" type="text" role="search"
+											style="border-radius: 25px; width: 100%;"
+											class="form-control   search textBox search-query"
+											size="15px" placeholder="Search" required /> <input type="submit"
+											style="border-radius: 0 25px 25px 0; margin-left: -40px; border: 1px solid #FFF; width: 25%;"
+											class="notranslate whitecolor bold form-control btn btnbgcolor"
+											value="Go" />
+									</div>
+								</form>
+							</div>
+							<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+								<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"
+									title="Change Theme Color"
+									style="float: left; padding: 2px 0 0">
+									<label
+										style="font-size: 100%; color: #FFF; font-weight: bold; display: none">
+										Select Theme</label> <a style="display: inline-block;" href="#"
+										title="Blue Theme" onclick="colorchange('blue')" id="blue"><i
+										class=" fa fa-circle" aria-hidden="true"
+										style="font-size: 20px; color: #0377ff;"></i> <!-- <img  class="img-responsive" src="images/blue.png" width="16px" height="18px" /> --></a>
+									<a style="display: inline-block;" href="#" title="Red Theme"
+										onclick="colorchange('red')" id="red"><i
+										class=" fa fa-circle" aria-hidden="true"
+										style="font-size: 20px; color: #f50703;"></i> <!-- <img class="img-responsive" src="images/meroon.png" width="16px" height="18px"    /> --></a>
+									<br> <a style="display: inline-block;" href="#"
+										title="Black Theme" onclick="colorchange('black')" id="black"><i
+										class=" fa fa-circle " aria-hidden="true"
+										style="font-size: 20px; color: black;"></i> <!-- <img  class="img-responsive" src="images/blue.png" width="16px" height="18px" /> --></a>
+									<!-- <a  style="display:inline-block;" href="#" title="Orange Theme" onclick="colorchange('orange')" id="orange"><i class="  fa fa-circle" aria-hidden="true" style="font-size:20px; color:orange;"></i><img class="img-responsive" src="images/orange.png" width="16px" height="18px"   /></a> -->
+									<a style="display: inline-block;" href="#" title="Green Theme"
+										onclick="colorchange('green')" id="green"><i
+										class=" fa fa-circle " aria-hidden="true"
+										style="font-size: 20px; color: #19ea1c"></i></a>
+								</div>
+								<!-- <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"
+									title="Change Theme Font Size"
+									style="padding: 10px 0px; float: left;">
+									
+									<a href="#" id="decfont" class="whitecolor"
+										style="padding: 5px; border: 1px solid #FFF; font-size: 12px !important;"><span
+										style="width: 10px; font-size: 12px !important;"
+										class="glyphicon glyphicon-font"></span><span
+										style="width: 8px; font-size: 12px !important;"
+										class='glyphicon glyphicon-minus'></span></a> <a href="#"
+										id="equfont" class="whitecolor"
+										style="padding: 5px; border: 1px solid #FFF; font-size: 12px !important;"><span
+										style="width: 10px; font-size: 12px !important;"
+										class="glyphicon glyphicon-font"></span></a> <a href="#"
+										id="incfont" class="whitecolor"
+										style="padding: 5px; border: 1px solid #FFF; font-size: 12px !important;"><span
+										style="width: 10px; font-size: 12px !important;"
+										class="glyphicon glyphicon-font"></span><span
+										style="width: 8px; font-size: 12px !important;"
+										class='glyphicon glyphicon-plus'></span></a>
+								</div> -->
+
+								<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"
+									title="Change Theme Font Size"
+									style="padding: 1px 0px; float: left;">
+									<!--  -->
+									<a href="#" id="decfont" class="whitecolor theme-font"><span
+										class="glyphicon glyphicon-font theme-font-span"></span> <span
+										class='glyphicon glyphicon-minus theme-font-span'></span></a> <a
+										href="#" id="equfont" class="whitecolor theme-font"><span
+										class="glyphicon glyphicon-font theme-font-span"></span></a> <a
+										href="#" id="incfont" class="whitecolor theme-font"><span
+										class="glyphicon glyphicon-font theme-font-span"></span><span
+										class='glyphicon glyphicon-plus theme-font-span'></span></a>
+
+									<a href="./CitizenSiteMap" class="whitecolor theme-font" title="Site Map">
+										<img alt="SiteMap" src="images/ico_sitemap.png" width="20px"/>
+									</a>
+									
+									<img style="height: 20px;display: inline-block;" title="INDIAN FLAG" src="images/flag.gif" class="img-responsive"/>
+
+								</div>
+								<!-- <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"
+									style="padding: 5px 0; margin: 0px;">
+									<img style="height: 30px;" title="INDIAN FLAG"
+										src="images/flag.gif" class="img-responsive" />
+								</div> -->
+
+								<!-- <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"
+									style="padding: 0px 0; margin: 0px;">
+									<img style="height: 20px;" title="INDIAN FLAG"
+										src="images/flag.gif" class="img-responsive" />
+								</div> -->
+								<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"
+									style="padding: 0;">
+									<!-- <a href="./ScreenReaderAccess" class="dropdown-toggle">Screen Reader Access</a> -->
+
+									<a href="./ScreenReaderAccess" id="decfont" class="whitecolor" style="padding: 3px; border: 1px solid #FFF; font-size: 12px !important; text-decoration: none !important;"><span
+										style="width: 8px; font-size: 9px !important;"></span>Screen
+										Reader Access</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</nav>
+		</header>
+
+		<div class="container" style="width: 100%" id="belowtopnav">
+			<div class="row">
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"
+					style="margin: -10px 0px 0px 0px; padding: 0px; height: 100% !important;">
+					<div style="top: -2px;">
+						
+	<body>
+		<div align="center" class="changefont pgtophead rti">
+			<img src="images/arrow_blue.gif" height="15" width="50"/><font
+				style="font-size: 12px; font-weight: bold;"><a href="./Index" target="_self">HOME</a> >> <font>FIR STATUS</font></font>
+		</div>
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" align="center"
+			style="margin: -10px 0px 0px 0px; padding: 0px; height: 100% !important; text-align: center;">
+
+			<form AUTOCOMPLETE="OFF" id="id1" method="post" action="./FIRStatusCheck?0-3.-form">
+
+				<table width="82%" align="center">
+					<tr>
+						<td>
+
+							<p class="pgtophead rti changefont title-header" id="missng">FIR
+								STATUS</p> <br />
+
+						</td>
+						<br />
+					</tr>
+
+					<tr>
+						<td>
+							<table class="divborder"
+								style="padding: 10px; border-radius: 25px; border-collapse: separate; width: 100%">
+								<tr>
+									<td>
+										<div>
+
+											<div>
+
+												<table width="100%" class="new-font-div changefont">
+													<!-- <tr style="text-align: left;"  height="40"  class=" tdbgcolor">
+	  				<td  colspan="2"   height="40"> 
+						<span class="red"> <b> NOTE :</b> To Know the FIR status, please select either the registration date & time or mobile number.</span>	
+					</td>
+				</tr> -->
+													<tr height="40">
+
+														<td align="right" width="50%"><font
+															style="font-size: 15px; font-weight: bold;">Select
+														</font><span class="feedback">*</span>&nbsp;&nbsp;</td>
+
+														<td colspan="2" align="left"><span class="radiogroup" id="id3"> <input name="mobnoChoice" type="radio" checked="checked" value="0" id="id3-0"/><label for="id3-0">Registration Date</label> .  .  <input name="mobnoChoice" type="radio" value="1" id="id3-1"/><label for="id3-1">Complainant Mobile Number</label> .  . </span>
+
+														</td>
+
+													</tr>
+													<tr>
+
+														<td class="tdbgcolor" width="50%" height="40"
+															align="right"><font class="changefont tdbgcolor"
+															style="color: #0066FF; font-size: 15px;"><b>Select
+																	District</b></font><span class="feedback">*</span>&nbsp;&nbsp;</td>
+
+														<td align="left" width="50%" height="40" class="tdbgcolor">
+
+															<select size="1" class="ctrDropDownBigFontSize tdbgcolor new-font-div" name="District Name" id="id4">
+<option selected="selected" value="">Choose One</option>
+<option value="0">ARIYALUR</option>
+<option value="1">AVADI CITY</option>
+<option value="2">CBCID - CC WING</option>
+<option value="3">CBCID - CYBER CELL</option>
+<option value="4">CBCID - HQRS</option>
+<option value="5">CBCID - NORTH</option>
+<option value="6">CBCID - OCU</option>
+<option value="7">CBCID - SID</option>
+<option value="8">CBCID - SOUTH</option>
+<option value="9">CCIW</option>
+<option value="10">CHENGALPATTU</option>
+<option value="11">CHENNAI - CCB</option>
+<option value="12">CHENNAI CITY</option>
+<option value="13">CHENNAI - PEW EAST</option>
+<option value="14">CHENNAI - PEW NORTH</option>
+<option value="15">CHENNAI - PEW SOUTH</option>
+<option value="16">CHENNAI - PEW WEST</option>
+<option value="17">CHENNAI RAILWAYS</option>
+<option value="18">CHENNAI - TIW EAST</option>
+<option value="19">CHENNAI - TIW NORTH</option>
+<option value="20">CHENNAI - TIW SOUTH</option>
+<option value="21">CHENNAI - TIW WEST</option>
+<option value="22">COIMBATORE</option>
+<option value="23">COIMBATORE CITY</option>
+<option value="24">CSCID - CHENNAI</option>
+<option value="25">CSCID - MADURAI</option>
+<option value="26">CSGCID - NAGAPATTINAM</option>
+<option value="27">CSGCID - RAMNAD</option>
+<option value="28">CUDDALORE</option>
+<option value="29">CYBER CRIME WING I</option>
+<option value="30">CYBER CRIME WING II</option>
+<option value="31">CYBER CRIME WING III</option>
+<option value="32">DHARMAPURI</option>
+<option value="33">DINDIGUL</option>
+<option value="34">EOW</option>
+<option value="35">ERODE</option>
+<option value="36">IDOL WING</option>
+<option value="37">KALLAKURICHI</option>
+<option value="38">KANCHEEPURAM</option>
+<option value="39">KANYAKUMARI</option>
+<option value="40">KARUR</option>
+<option value="41">KRISHNAGIRI</option>
+<option value="42">MADURAI</option>
+<option value="43">MADURAI CITY</option>
+<option value="44">MAYILADUTHURAI</option>
+<option value="45">NAGAPATTINAM</option>
+<option value="46">NAMAKKAL</option>
+<option value="47">NIB - CID</option>
+<option value="48">NILGIRIS</option>
+<option value="49">PERAMBALUR</option>
+<option value="50">PUDUKKOTTAI</option>
+<option value="51">Q-BRANCH CID</option>
+<option value="52">RAMANATHAPURAM</option>
+<option value="53">RANIPET</option>
+<option value="54">SALEM</option>
+<option value="55">SALEM CITY</option>
+<option value="56">SIVAGANGAI</option>
+<option value="57">TAMBARAM CITY</option>
+<option value="58">TENKASI</option>
+<option value="59">THANJAVUR</option>
+<option value="60">THENI</option>
+<option value="61">THIRUPATHUR</option>
+<option value="62">THOOTHUKUDI</option>
+<option value="63">TIRUNELVELI</option>
+<option value="64">TIRUNELVELI CITY</option>
+<option value="65">TIRUPPUR</option>
+<option value="66">TIRUPPUR CITY</option>
+<option value="67">TIRUVALLUR</option>
+<option value="68">TIRUVANNAMALAI</option>
+<option value="69">TIRUVARUR</option>
+<option value="70">TRICHY</option>
+<option value="71">TRICHY CITY</option>
+<option value="72">TRICHY RAILWAYS</option>
+<option value="73">VELLORE</option>
+<option value="74">VILUPPURAM</option>
+<option value="75">VIRUDHUNAGAR</option>
+<option value="76">VPC - CID</option>
+</select> <span class="feedback red" id="id5">
+  
+</span>
+														</td>
+
+													</tr>
+													<tr id="id6" style="display:none" data-wicket-placeholder=""></tr>
+
+													<tr>
+
+														<td align="right" width="50%" height="40"><font
+															class="changefont"
+															style="color: #0066FF; font-size: 15px;"><b>Select
+																	Police Station</b></font><span class="feedback">*</span>&nbsp;&nbsp;</td>
+
+														<td align="left" width="50%" height="40"><select name="Police Station Name" id="maxofrecords111" size="1" class="ctrDropDownBigFontSize tdbgcolor new-font-div">
+<option selected="selected" value="">Choose One</option>
+</select> <span><div
+																	class="feedback">
+																	<span id="id7">
+  
+</span>
+																</div></span></td>
+													</tr>
+													<tr class="tdbgcolor" height="40">
+
+														<td align="right" width="50%" height="40"><font
+															class="changefont"
+															style="color: #0066FF; font-size: 15px;"><b>FIR
+																	Number</b></font><span class="feedback">*</span>&nbsp;&nbsp;</td>
+
+														<td align="left" width="50%" height="40" class="tdbgcolor">
+															<input class="textfieldNormal new-font-div" type="text" maxlength="12" name="FIR Number" id="CaseNumber" onchange="addCaseNumber(this);" onKeyDown="addCaseNumber(this);" onKeyUp="addCaseNumber(this);" value=""> <span><font
+																	style="font-size: 12px;">&nbsp;(Eg.,10/2010 )</font></span> <span>
+																	<div class="feedback">
+																		<span id="id8">
+  
+</span>
+																	</div>
+															</span>
+														</td>
+													</tr>
+
+													<!-- <tr class="tdbgcolor"><table  align="center" class="divborder" style="padding:10px; border-radius:25px;border-collapse: separate;" width="100%"> -->
+													<div id="id9">
+														<tr height="40">
+															<td align="right" width="40%" height="40"><font
+																class="changefont"
+																style="color: #0066FF; font-size: 15px;"><b>Registration
+																		Date</b></font><span class="feedback">*</span>&nbsp;&nbsp;</td>
+
+															<td align="left" width="50%" height="40"><input type="text" class="textfieldNormalFormDate  new-font-div" value="" maxlength="10" readonly="readonly" id="occurredDate" size="8" name="regDateTime:Registration Date" onclick="javascript:NewCssCal(&#039;occurredDate&#039;,&#039;ddMMyyyy&#039;,&#039;dropdown&#039;, false, &#039;12&#039;, false, true)" onchange="showClearIcon();"/> <span> <img onclick="javascript:NewCssCal(&#039;occurredDate&#039;,&#039;ddMMyyyy&#039;,&#039;dropdown&#039;, false, &#039;12&#039;, false, true)" src="images/calender.gif" border="0"/>
+															</span> &nbsp; <span id="editoccurdateclear"
+																name="editoccurdateclear" style="visibility: hidden;">
+																	<img alt="clear date" src="images/clear-left.png" width="20px" style="cursor: pointer;" onclick="javascript:clearDate(document.getElementById(&#039;occurredDate&#039;))">
+															</span> <span><div class="feedback">
+																		<span id="ida" style="display:none" data-wicket-placeholder=""></span>
+																	</div></span></td>
+														</tr>
+														<tr class="tdbgcolor" height="40">
+															<td align="right" width="50%" height="40"><font
+																class="changefont"
+																style="color: #0066FF; font-size: 15px;"><b>Time</b></font><span
+																class="feedback">*</span>&nbsp;&nbsp;</td>
+															<td width="50%" height="40" align="left"><select id="OccurenceHHTime" name="regDateTime:OccHHTime" class="ctrDropDownTime tdbgcolor new-font-div changefont">
+<option selected="selected" value="0">HH</option>
+<option value="1">00</option>
+<option value="2">01</option>
+<option value="3">02</option>
+<option value="4">03</option>
+<option value="5">04</option>
+<option value="6">05</option>
+<option value="7">06</option>
+<option value="8">07</option>
+<option value="9">08</option>
+<option value="10">09</option>
+<option value="11">10</option>
+<option value="12">11</option>
+<option value="13">12</option>
+<option value="14">13</option>
+<option value="15">14</option>
+<option value="16">15</option>
+<option value="17">16</option>
+<option value="18">17</option>
+<option value="19">18</option>
+<option value="20">19</option>
+<option value="21">20</option>
+<option value="22">21</option>
+<option value="23">22</option>
+<option value="24">23</option>
+</select>
+																<select id="OccurenceMMTime" name="regDateTime:OccMMTime" class="ctrDropDownTime tdbgcolor new-font-div changefont">
+<option selected="selected" value="0">MM</option>
+<option value="1">00</option>
+<option value="2">01</option>
+<option value="3">02</option>
+<option value="4">03</option>
+<option value="5">04</option>
+<option value="6">05</option>
+<option value="7">06</option>
+<option value="8">07</option>
+<option value="9">08</option>
+<option value="10">09</option>
+<option value="11">10</option>
+<option value="12">11</option>
+<option value="13">12</option>
+<option value="14">13</option>
+<option value="15">14</option>
+<option value="16">15</option>
+<option value="17">16</option>
+<option value="18">17</option>
+<option value="19">18</option>
+<option value="20">19</option>
+<option value="21">20</option>
+<option value="22">21</option>
+<option value="23">22</option>
+<option value="24">23</option>
+<option value="25">24</option>
+<option value="26">25</option>
+<option value="27">26</option>
+<option value="28">27</option>
+<option value="29">28</option>
+<option value="30">29</option>
+<option value="31">30</option>
+<option value="32">31</option>
+<option value="33">32</option>
+<option value="34">33</option>
+<option value="35">34</option>
+<option value="36">35</option>
+<option value="37">36</option>
+<option value="38">37</option>
+<option value="39">38</option>
+<option value="40">39</option>
+<option value="41">40</option>
+<option value="42">41</option>
+<option value="43">42</option>
+<option value="44">43</option>
+<option value="45">44</option>
+<option value="46">45</option>
+<option value="47">46</option>
+<option value="48">47</option>
+<option value="49">48</option>
+<option value="50">49</option>
+<option value="51">50</option>
+<option value="52">51</option>
+<option value="53">52</option>
+<option value="54">53</option>
+<option value="55">54</option>
+<option value="56">55</option>
+<option value="57">56</option>
+<option value="58">57</option>
+<option value="59">58</option>
+<option value="60">59</option>
+</select>
+																<span><font style="font-size: 12px;">&nbsp;&nbsp;(24
+																		Hrs. Format )</font></span> <!-- <select  wicket:id="OccAMPMTime" id="OccurenceAMPMTime" name="OccurenceAMPMTime" class="ctrDropDownTime"/> -->
+															</td>
+														</tr>
+													</div>
+													<!-- <tr  class="tdbgcolor" height="40">
+
+				<td align="right" width="50%" height="40"  ><font class="changefont" style="color: #0066FF;font-size: 15px;"><b>Complainant Mobile Number</b></font><span class="feedback">*</span>&nbsp;&nbsp;</td>
+
+				<td align="left" width="50%" height="40"  class="tdbgcolor"> <input class="textfieldNormal new-font-div" onkeyup="checkNumbers(this)" onkeydown="checkNumbers(this)" maxlength="10" id="Mobile"  type="text" name="personmobileno" autocomplete="off"  wicket:id="mobNumber" >
+				<span><font style="font-size: 12px;">&nbsp;(Eg.,10/2010 )</font></span>
+				<span>
+				<div class="feedback"><span wicket:id="mobNumberFeedback"></span></div>
+				</span>
+				</td>
+				
+	  		</tr>	 -->
+
+													<tr id="idb" style="display:none" data-wicket-placeholder=""></tr>
+													<tr>
+														<td colspan="2" align="center"><span class="feedback center-align red bold" id="OTPmessageFeedback" name="OTPmessageFeedback">
+  
+</span></td>
+													</tr>
+
+
+													<!-- 		<td align="right" width="40%" height="40" ><font class="changefont" style="color: #0066FF;font-size: 15px;"><b>Enter Secure code</b></font><span class="feedback">*</span>&nbsp;&nbsp;</td>
+										<td align="left" width="50%" height="40" >
+										<table  valign="top"  align="left">	
+											<tr>
+												<td align="center" valign="middle" style="background-color: silver;"> 
+													<font style="font-size: 15px; font-weight: bold;"><span wicket:id="captchaNo"></span></font>
+												</td>
+												<td><font style="font-size: 15px; font-weight: bold;"><img class="img-responsive img-thumbnail"  wicket:id="captchaImage" style="height: 55% !important; width: 20% !important;"/></font></td>
+												<td  style="background-color: silver"></td>
+												
+												<td valign="middle">
+													&nbsp;&nbsp;
+													<input wicket:id="Security Code" id="captcha Image Text" name="captchaImageText" type="text" size="7" maxlength="5"    class="textfieldCapcha new-font-div"/>
+													<br/><span><font size="2"><div class="feedback" style=" text-align:left;"><span wicket:id="captchaFeedback" id="captchaFeedback" name="captchaFeedback"></span></div></font></span>
+												</td>
+												<td align="center" valign="middle">
+													&nbsp;&nbsp;<a href="#" title="Reload the new captcha image" wicket:id="link"><img alt="Help" src="images/Refresh.png" width="20px"></a>
+												</td>	
+												</tr>										
+											</table>
+									</td> -->
+													<!-- <table   align="center" style="border: 1px solid rgb(102, 194, 255); color: rgb(0, 64, 107);" width="100%" > -->
+													<tr>
+														<td colspan="5" align="center"><span
+															class="changefont bold">Secure Code <span
+																class="feedback red">*</span></span> <input class="tdbgcolor new-font-div changefont" id="captchaImageText6 textfieldCapcha" maxlength="5" size="7" type="text" placeholder="Secure code" name="captchaImageText" autocomplete="off" value=""/> <!-- <span id="captchaNo5" wicket:id="captchaNo"  style="background-color: silver; font-size: 20px !important; font-weight: bold;" ></span> -->
+
+															<img class="img-responsive img-thumbnail" style="height: 55% !important; width: 10% !important;" id="idc" src="./FIRStatusCheck?0--form-captchaImage&amp;antiCache=1708735909858"/>
+															<a id="link1" title="Reload the new Secure code" href="./FIRStatusCheck?0-3.-form-link"><img style="width: 30px; padding: 2px !important;" src="images/Refresh.png" alt="Help"></a> <br /> <span><font
+																size="2"><div class="feedback"
+																		style="text-align: center;">
+																		<span id="captchaFeedback" name="captchaFeedback">
+  
+</span>
+																	</div></font></span></td>
+
+													</tr>
+													<tr>
+														<td colspan="2"><span class="red bold" id="idd"></span></td>
+													</tr>
+													<tr class="tdbgcolor" height="40">
+														<td align="center" colspan="5">
+															<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2"></div>
+															<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8" id="ide">
+																<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"></div>
+																<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+																	<input id="idf" style="display:none" data-wicket-placeholder=""></input><input type="button" name="webconpanel:submitotp" value="Submit" class="form-control_button bold changefont btncolor btncolorH" onclick="getBusyOverlay(&#039;loading&#039;,{color:&#039;white&#039;, opacity:0.50, text:&#039;Loading...&#039;, style:&#039;text-shadow: 0 0 1px black;font-size:16px;color:green&#039;},{color:&#039;#0d3309&#039;, size:115, type:&#039;o&#039;, iradius:33, weight:6, count:12, speed:41});" id="id2"/>
+																</div>
+																<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+																	<input id="id10" style="display:none" data-wicket-placeholder=""></input>
+																</div>
+															</div>
+															<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2"></div>
+														</td>
+
+													</tr>
+													<!-- </table> -->
+													<!-- </table></tr> -->
+												</table>
+											</div>
+										</div>
+									</td>
+								</tr>
+
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+					</tr>
+				</table>
+			</form>
+			<br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br />
+
+		</div>
+	</body>
+
+					</div>
+					<br />&nbsp;<br />&nbsp;<br />&nbsp;<br />&nbsp;<br />&nbsp;<br />&nbsp;<br />&nbsp;<br />&nbsp;
+				</div>
+			</div>
+		</div>
+		
+	
+		<div class="footer-dark col-xs-12 col-sm-12 col-md-12 col-lg-12 padding-0 margin-0">
+			<footer>
+				<!-- 	 id="footer"		   -->
+				<div class="container">
+					<div class="row" style="margin-top: 10px;">
+						<div class="col-sm-6 col-md-4 col-xl-4 item"
+							style="border-right: 1px solid #53595F; border-left: 1px solid #53595F">
+							<h3>Tamil Nadu Police Department Corner</h3>
+							<ul>
+								<li><a href="./Login">Officers Portal Login&nbsp;</a></li>
+								<li><a href="./CitizenSiteMap">Site Map</a></li>
+								<li><a href="./FeedbackCitizen">Feedback</a></li>
+							</ul>
+						</div>
+						<div class="col-sm-6 col-md-3 col-xl-3 item " style="border-right: 1px solid #53595F;">
+							<ul>
+								<!-- <li><a href="./PreventionTips">Prevention Tips</a></li>
+		                        <li><a href="./CitizenPublication">Publications</a></li> -->
+								<li><a href="./Recruitment">Recruitment</a></li>
+								<li><a href="./Links">Important Sites</a></li>
+								<li><a href="./RtiAct">RTI Act</a></li>
+								<li><a href="./CitizenHelp">Help</a></li>
+							</ul>
+						</div>
+						<div class="col-sm-6 col-md-2 col-xl-2 item " style="border-right: 1px solid #53595F;">
+							<ul>
+								<!-- <li><a href="./PreventionTips">Prevention Tips</a></li> -->
+								<li>
+								<a href="./PreventionTipsNew">Prevention Tips</a>
+								<!-- <a href="#" data-toggle="collapse"
+									data-target="#policeverify">Prevention Tips</a>
+									<div id="policeverify" class="collapse"
+										style="padding: 5px 35px;">
+										<a href="#" data-toggle="modal" data-target="#landGrabbing"
+											class="overflow">Land Grabbing</a> 
+										<a href="#" data-toggle="modal" data-target="#kandhuVatti" class="overflow">Kandhu Vatti</a> 
+										<a href="#" data-toggle="modal" data-target="#forgery" class="overflow">Forgery</a> 
+										<a href="#" data-toggle="modal" data-target="#jobRacketeering" class="overflow">Job Racketeering</a> 
+										<a href="./PreventionTips" target="_blank" class="overflow">Crime Prevention Tips</a>
+									</div> --></li>
+								<li><a href="./PreventionTips" target="_blank" class="overflow">Crime Prevention Tips</a></li>
+								<li><a href="./CitizenPublication">Publications</a></li>
+								<li><a href="./CCTNSContact">Contact Us</a></li>
+								<!--  <li><a href="./Recruitment">Recruitment</a></li>
+		                        <li><a href="./Links">Important Sites</a></li> -->
+
+							</ul>
+						</div>
+						<div class="col-sm-6 col-md-3 col-xl-3 item text-right"style="border-right: 1px solid #53595F; border-left: 1px solid #53595F">
+							<!-- <a href="https://www.facebook.com/tnpoliceofficial" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+		                	<p>Tamil Nadu Police Face Book Page</p>
+		                	<a class="" target="_blank" style="width: auto;border: none; box-shadow: none;" href="http://ncrb.gov.in" title="External Website that opens in a new window"><img src="images/ncrb.jpeg" class="img-responsive  box-shadowH linkHWoutFBG" style="width:215px;height: 50px;"></a> -->
+							<ul>
+								<li><a href="./CCTNSDisclaimer">Disclaimer</a></li>
+								<li><a href="./CCTNSPrivacyPolicy">Privacy Policy</a></li>
+								<li><a href="./CCTNSTermsofuse">Terms of use</a></li>
+							</ul>
+						</div>
+						<div class="col-sm-12 col-md-12 col-xl-12"
+							style="padding: 0 0 6px">
+							<div class="col-sm-4 col-md-4 col-xl-4 padding-0 margin-0">
+								<p class="copyright text-left">
+									Designed and Development : <span class="copyright-nic bold"><a
+										href="https://www.nic.in/" target="_blank"
+										title="NIC, New Delhi">NIC</a>,<a href="http://www.tn.nic.in/"
+										target="_blank" title="NIC, Tamilnadu">Chennai</a></span>
+								</p>
+							</div>
+							<div class="col-sm-4 col-md-4 col-xl-4 padding-0 margin-0">
+								<p class="copyright text-center">
+									Content is owned and maintained by <span
+										class="copyright-police bold">TamilNadu Police</span>
+								</p>
+							</div>
+							<div class="col-sm-4 col-md-4 col-xl-4">
+								<p class="copyright  text-right">
+									 <strong>Last Updated : <label class="copyright-hit">24-Feb-2024</label></strong> 
+									<br>
+								</p>
+							</div>
+						</div>
+					</div>
+					<p class="resolution  text-center">Best viewed in Firefox (v
+						50.0 & Above), Google Chrome (v 37.0 & Above) [Resolution 1280 X
+						600 & Above] and Firefox for Android</p>
+				</div>
+			</footer>
+		</div>
+	</div>
+</body>
+</html>
