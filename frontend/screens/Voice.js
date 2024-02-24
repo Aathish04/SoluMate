@@ -37,6 +37,7 @@ const ChatPage = () => {
   const fadeAnim = useRef(new Animated.Value(0)).current; // for fade-in animation
   const [currentUser, setCurrentUser] = useState(null);
   const [userData, setUserData] = useState('');
+  const [fromServ, setfromServ] = useState('');
 
   const getUserData = async (userID) => {
     const q = query(collection(db, 'users'), where('userid', '==', userID));
@@ -153,13 +154,13 @@ const ChatPage = () => {
     setMessages([...messages, newMessage]);
     setTimeElapsed(0);
 
-    
+
 
 
 
     // Simulate receiving an AI response with an audio file
     setTimeout(() => {
-      const uri = saveBase64Audio(base64Audio,'hello.3gp');
+      const uri = saveBase64Audio(fromServ ,'hello.3gp');
       console.log(uri)
       const aiResponse = {id: Date.now() + 1, text: response_, sender: 'ai', uri: uri};
       setMessages(currentMessages => [...currentMessages, aiResponse]);
@@ -222,8 +223,11 @@ const ChatPage = () => {
       const data = await response.json();
       // Assuming the response JSON has a key that contains the actual text message you want to display.
       // Adjust 'textKey' to the actual key that contains the message.
-      setResponse_(data.freetext || 'No response text found.');
+      
+  
       console.log('Response data:', data);
+      setfromServ(data.freetext || 'No response text found.');
+
     } catch (error) {
       console.error('Error:', error);
       setResponse_('Error fetching response');
